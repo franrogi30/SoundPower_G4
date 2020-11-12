@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <%- include("partials/head") %>
-  <script src="/javascripts/userRegister.js"></script>
+  <script src="/javascript/userRegister.js"></script>
   <body>
     <%- include("partials/navbar") %> <%- include("partials/social") %>
 
@@ -15,13 +15,13 @@
        <% for( let i = 0; i < errors.length; i++) { %> 
         <ul>
         <li  style="color:red; display: block; " >
-          <%= errors[i].msg %> 
+          <%= errors[i].msg %>  
         </li>
       </ul><br>
        <% } %> 
        <% } %> 
 
-       <form action="/users/register" method="POST" enctype="multipart/form-data">
+       <form id="register" action="/users/register" method="POST" enctype="multipart/form-data">
         <fieldset >
           <div class="form-group Usuario col-12 col-lg-6">
             <h2 class="fs-title">Crea tu Usuario</h2>
@@ -30,13 +30,13 @@
             <label class="col-12" for="email">Email</label>
             <input
               type="text"
-               class="form-control col-12 <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":(typeof errors != 'undefined' && errors.email)?"is-invalid": ""  %>"
+               class="form-control col-12" <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":(typeof errors != 'undefined' && errors.email)?"is-invalid": ""  %>"
                         id="email" value="<%= (typeof old != 'undefined' && old.email)?old.email:'' %>" placeholder="email" name="email"/>
                         <small id="errorEmail" class="text-danger"><%= (typeof errors != 'undefined' && errors.email)?errors.email.msg: "" %> </small>
             <label class="col-12" for="password">Contraseña</label>
             <input
               type="password"
-              class="form-control col-12 <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
+              class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
                         id="pass" placeholder="contraseña" name="pass"/>
                         <small id="errorPass" class="text-danger"><%= (typeof errors != 'undefined' && errors.pass)?errors.pass.msg: "" %> </small>
                       </div>
@@ -44,9 +44,9 @@
             <label class="col-12" for="password">Repita Contraseña</label>
             <input
               type="password"
-              class="form-control col-12 <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
+              class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
                         id="cpass" placeholder="contraseña" name="cpass"/>
-                        <small id="errorcPass" class="text-danger"><%= (typeof errors != 'undefined' && errors.cpass)?errors.cpass.msg: "" %> </small>
+                        <small id="errorCpass" class="text-danger"><%= (typeof errors != 'undefined' && errors.cpass)?errors.cpass.msg: "" %> </small>
                       </div>
                       <div class="form-group col-12 ">
                         <div class="custom-file mt-4">
@@ -63,15 +63,16 @@
             <label class="col-12" for="email">Nombre</label>
             <input
               type="text"
-              class="form-control <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
-                        id="fname"  name="fname"  value="<%= (typeof old != 'undefined' && old.fname)?old.fname:'' %>" placeholder="nombre" title="El nombre debe tener más de dos caracteres"/>
+              class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
+                        id="fname"  name="fname"  value="<%= (typeof old != 'undefined' && old.fname)?old.fname:'' %>" placeholder="Nombre" title="El nombre debe tener más de dos caracteres"/>
                         <small id="errorFname" class="text-danger"><%= (typeof errors != 'undefined' && errors.fname)?errors.fname.msg: "" %> </small>
             
             <label class="col-12" for="email">Apellido</label>
             <input
-              class="col-12"
               type="text"
-              name="lname"
+              class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
+              id="lname"  name="lname"  value="<%= (typeof old != 'undefined' && old.lname)?old.lname:'' %>" placeholder="Apellido" title="El apellido debe tener más de dos caracteres"/>
+              <small id="errorLname" class="text-danger"><%= (typeof errors != 'undefined' && errors.lname)?errors.lname.msg: "" %> </small>
               placeholder="Apellido"
             />
             <label class="col-12" for="email">Telefono</label>
