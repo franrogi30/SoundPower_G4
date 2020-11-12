@@ -14,13 +14,18 @@
 
                 <div class="titulo col-12">
                     <h2>
-                        <%= title %>
+                      Perfil del usuario
                     </h2>
                 </div>
                    <div class="contenido">
                        
                               <form action="/users/profile" method="POST">
                                 <fieldset>
+                                  <img src="<% user.avatar %>" alt="avatar usuario">
+                                </fieldset>
+                                
+                                <fieldset>
+                                  
                                   <div class="Datos col-12 col-lg-6">
                                     <h2 class="fs-title">Datos Personales</h2>
                                     <label class="col-12" for="name">Nombre</label>

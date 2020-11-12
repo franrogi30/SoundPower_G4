@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include("partials/head.ejs")%>
+<%- include("partials/head")%>
 <body>
-   <%- include("partials/navbar.ejs")%>
+   <%- include("partials/navbar")%>
    <%- include("partials/social") %>
   
     <div class="modifica container">
      
 <div class="row"> 
-  <h1 class="col-12"><%- producto.name %></h1>
+  <h1 class="col-12">
+    <%- title %>
+  </h1>
  <div class="formulario col-12 col-md-6 col-lg-6">
        <!--FORMULARIO-->
   <form action="/products/:id/modify" method="POST">
@@ -16,10 +18,10 @@
       
   <div class="seleccion-instrumento">
     <h4> Cambiar Categoria</h4>
-    <label for=""> <%-producto.category %></label> <br>
+    <label> <%- producto.category %></label> <br>
       <select class="seleccion-de-instrumento col-12 col-md-12 col-lg-6">
        <option selected>Cambiar Categoria</option>
-       <option value="cuerdass">Guitarras/Bajos</option>
+       <option value="cuerdas">Guitarras/Bajos</option>
        <option value="teclados">Teclados/Pianos</option>
        <option value="tecnica">Amplificadores/microfonos</option>
        <option value="accesorios">Accesorios</option>
@@ -73,6 +75,6 @@
   </form>
     </div>
     <!--FOOTER-->
-<%- include("partials/footer.ejs")%>
+<%- include("partials/footer")%>
 </body>
 </html>

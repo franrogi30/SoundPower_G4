@@ -61,11 +61,17 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <% if (typeof user != "undefined" && user) { %>
-            
+            <% if ( user.rol= "admin" ) { %>
+                 <a class="dropdown-item" href='/users/profile'> Adminitrar Perfil</a>
+                
+                 <a class="dropdown-item" href='/products/add' >Agregar Producto</a>
+              <% }else{ %> 
+             
               <a class="dropdown-item" href="/users/profile">Perfil</a>
               <a class="dropdown-item" href= "/products/cart">Carrito</a>
              
-          <% }else{ %>
+          <% } %>
+              <% }else{ %>
             <a class="dropdown-item" href="/users/login">Ingresa</a>
             <a class="dropdown-item" href="/users/register">Registrate</a>
           <% } %>

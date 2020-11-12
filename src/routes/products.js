@@ -15,9 +15,14 @@ router.post('/add',upProducts.any(),Controller.publicar)
 /* GET/POST Cart page */
 router.get('/cart', Controller.cart)
 
+//Modify Products 
+
 router.get('/:id/modify',Controller.modify)
 //router.post('/:id/modify', Controller.save)
 router.get('/categories/:category/',Controller.category)
+
+//Delete products
+//router.post('/delete', Controller.delete)
 
 router.get('/discount',Controller.discount)
 router.get('/search',Controller.search)

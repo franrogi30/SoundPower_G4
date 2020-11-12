@@ -68,7 +68,7 @@ module.exports = {
             id: id,
             producto: producto[0],
             price:producto.price,
-            image:producto.image,
+            image:(req.files[0]) ? req.files[0].filename : producto.image,
             description:producto.description,
             category:producto.category
 
@@ -115,5 +115,16 @@ module.exports = {
     }else{
         return res.redirect('/')
     }
+    },
+    delete : (req,res)=>{
+        let idProducto = req.params.id;
+        dbProducts.forEach(producto=>{
+            if(producto.id == idProducto){
+                let aEliminar = dbProducts.indexOf(producto);
+                dbProducts.splice(aEliminar,1);
+            }
+        })
+        fs.writeFileSync(path.join(__dirname, '../data/productsDataBase.json'), JSON.stringify(dbProducts));
+        res.redirect('/users/profile')
     }
 }

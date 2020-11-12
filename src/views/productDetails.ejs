@@ -46,12 +46,23 @@
               </div>
               <h5 class="precio col-12"><%= producto.price %> </h5>
               <div class="botones bBuy&fav">
+              
                 <% if (typeof user != "undefined" && user) { %>
+                  <% if ( user.rol= "admin" ) { %>
+                  <a href='/products/:id/modify' class="col-6"><button  class="col-12 comprar">Modificar</button></a>
+                
+                 <a href='/products/delete' class="col-6"><button  class="col-12 favoritos">Eliminar</button></a>
+                 <% } else{ %>
                   <a href='/products/cart' class="col-6"><button  class="col-12 comprar">comprar</button></a>
-                <% }else{ %>
-                  <a href='/users/register' class="col-6"><button  class="col-12 comprar">comprar</button></a>
                 <% } %>
+                <%} else{ %>
+                  <a href='/users/register' class="col-6"><button  class="col-12 comprar">comprar</button></a>
+              
                 <a href='/products/profile' class="col-6"><button  class="col-12 favoritos">favoritos</button></a>
+                <% } %>
+              
+              
+              
               </div>
               <div class="icons row">
                 <i class="fas fa-truck col-3"></i>

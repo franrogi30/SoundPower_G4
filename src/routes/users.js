@@ -3,6 +3,7 @@ var router = express.Router();
 var controller = require('../controllers/usersController.js');
 const loginValidator = require('../validator/loginValidator');
 const registerValidator = require('../validator/registerValidator');
+
 const upAvatar = require('../middlewares/upAvatar')
 
 

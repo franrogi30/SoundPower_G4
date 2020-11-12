@@ -39,6 +39,7 @@ module.exports = {
   Login: (req, res) => {
     res.render("login", {
       title: "Ingresá a tu cuenta",
+
     });
   },
 
@@ -54,7 +55,8 @@ module.exports = {
             id: user.id,
             nick: user.nombre + " " + user.apellido,
             email: user.email,
-            avatar:user.avatar
+            avatar:user.avatar,
+            rol:user.rol
           };
           res.locals.user = req.session.user;
           res.render("index", {
@@ -80,10 +82,10 @@ module.exports = {
     db.users.findByPk(req.session.user.id)
       .then((user) => {
         res.render("profile", {
-          title: "perfil del usuario",
           user: user,
           userSession: req.session.user,
           nick: user.nombre + " " + user.apellido,
+          rol: req.body.rol
         });
       })
       .catch((error) => res.send(error));
@@ -99,6 +101,7 @@ module.exports = {
         direccion: req.body.address,
         telefono: req.body.phone,
         contraseña: bcrypt.hashSync(req.body.pass, 10),
+        
       })
         .then((result) => {
           return res.redirect("/users/profile");
