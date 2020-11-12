@@ -54,6 +54,7 @@ module.exports = {
             id: user.id,
             nick: user.nombre + " " + user.apellido,
             email: user.email,
+            avatar:user.avatar
           };
           res.locals.user = req.session.user;
           res.render("index", {
@@ -76,12 +77,13 @@ module.exports = {
   },
 
   profile: (req, res) => {
-    db.Users.findByPk(req.session.user.id)
-      .then((User) => {
+    db.users.findByPk(req.session.user.id)
+      .then((user) => {
         res.render("profile", {
           title: "perfil del usuario",
-          user: User,
+          user: user,
           userSession: req.session.user,
+          nick: user.nombre + " " + user.apellido,
         });
       })
       .catch((error) => res.send(error));

@@ -4,6 +4,9 @@ const dbFaqs = require('../data/faqs') //requiero la base de datos de productos
 const fs = require('fs');
 const path = require('path');
 
+const db = require("../database/models");
+const Sequelize = require("sequelize");
+let Op = Sequelize.Op;
 
 module.exports = {
     index : (req, res) => {

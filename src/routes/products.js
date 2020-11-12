@@ -16,7 +16,7 @@ router.post('/add',upProducts.any(),Controller.publicar)
 router.get('/cart', Controller.cart)
 
 router.get('/:id/modify',Controller.modify)
-//router.post('/modify', Controller.save)
+//router.post('/:id/modify', Controller.save)
 router.get('/categories/:category/',Controller.category)
 
 router.get('/discount',Controller.discount)
