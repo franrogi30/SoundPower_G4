@@ -1,0 +1,24 @@
+.listadoProductos .products h2{
+background-color: #e4e4e4;
+color: #045757;
+margin-bottom: 3vh;
+border-radius: 5px;
+}
+.listadoProductos{
+    margin-top: 8vh;
+    margin-bottom: 5vh;
+}
+.listadoProductos .products article{
+    background-color: #e4e4e4;
+    opacity: 0.6;
+    padding: 1vh 2vw;
+    border-radius: 5px;
+    margin-bottom: 2vh;
+}
+
+.listadoProductos .products a {
+    color: #e4e4e4;
+    background-color:#045757;
+    border-radius:3px ;
+    padding: 1vh 2vw;
+}

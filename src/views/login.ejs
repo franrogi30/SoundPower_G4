@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("partials/head")%>
+
+<body>
+  <%- include("partials/navbar") %>
+  <%- include("partials/social") %>
+
+  <div class="container login">
+    <div class="row"></div>
+    
+    <% if (typeof errors != 'undefined') { %>
+  
+      <% for( let i = 0; i < errors.length; i++) { %> 
+       <li style="color:red;">
+         <%= errors[i].msg %>
+       </li><br>
+      <% } %> 
+      <% } %> 
+
+        <div class="login-text">
+          <h2>INGRESO</h2>
+          <p>Para acceder inicie sesión</p>
+        </div>
+        <div class="main">
+             <form action="/users/login" method="POST">
+              <div class="form-group col-12 col-md-6">
+                <label>Usuario</label>
+                <input type="email" class="form-control"  name="email" placeholder="Usuario">
+              </div>
+              <div class="form-group col-12 col-md-6">
+                <label>contraseña</label>
+                <input type="password"  class="form-control" name="pass" placeholder="contraseña">
+              </div>
+              <button type="submit" class="btn btn-secondary col-1">Login</button>
+            </form>
+         </div>
+    </div>
+  <%- include("partials/footer") %>
+</body>
+
+</html>

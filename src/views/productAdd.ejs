@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("partials/head.ejs")%>
+<body>
+   <%- include("partials/navbar.ejs")%>
+   <%- include("partials/social") %>
+  
+    <div class="publica container">
+      <div class="row">
+        <h1 class="col-12"><%=title%></h1>
+       
+ <div class="formulario col-12 col-md-6 col-lg-6">
+       <!--FORMULARIO-->
+  <form action="/products/add" method="POST" enctype="multipart/form-data">
+
+     <h2>INCLUYE ALGUNOS DETALLES</h2> <br>
+
+  <div class="seleccion-instrumento">
+
+    <label for=""> Tipo de instrumento *</label> <br>
+      <select class="seleccion-de-instrumento col-12 col-md-12 col-lg-6">
+       <option selected>seleccioná tu instrumento</option>
+       <option value="cuerdass">Guitarras/Bajos</option>
+       <option value="teclados">Teclados/Pianos</option>
+       <option value="tecnica">Amplificadores/microfonos</option>
+       <option value="accesorios">Accesorios</option>
+      </select> <br>
+  </div>
+      <div class="anuncio ">
+        
+              <label for="titulo de anuncio"> Título de anuncio *</label> 
+        <input type="text" class="titulo de anuncio col-12 col-md-12 col-lg-6" id="titulo de anuncio" name="titulo" placeholder="Ej: Guitarra Feder Stratocaster">
+      </div>
+      <div class="descripccion ">
+         <label>Descripción *</label> <br>
+        <textarea class="col-12 col-md-12 col-lg-6" name="descripcion" rows="6" ></textarea> 
+        </div>
+    </div>
+       <div class="col-sm-12 col-md-6">
+          <div class="precio">
+            <h2>FIJA UN PRECIO</h2> <br>
+            <div class="row">
+              <input type="text" class="col-sm-12 col-md-6" name="precio" id="precio" placeholder="Escriba el precio"><br>
+            </div>
+            <br>
+            <div>
+              <input type="radio" class="col-3" id="moneda" value="ARS">ARS 
+              <input type="radio" class="col-3" id="moneda" value="US$">US$
+              
+            </div>
+              
+              
+       </div>
+
+       <div class="fotos">
+
+        <h2>SUBE HASTA 8 FOTOS</h2> <br>
+        
+           <div class="imagen">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-image" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                    <path d="M10.648 7.646a.5.5 0 0 1 .577-.093L15.002 9.5V13h-14v-1l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71z"/>
+                    <path fill-rule="evenodd" d="M4.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                  </svg>
+            <label for="exampleFormControlFile1">Seleccione una imagen</label>
+              <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1">
+              
+            </div>
+          </div>
+            <div class="publicar"> 
+              <button type="submit" class="btn btn-primary">PUBLICAR AHORA</button>
+            </div>
+    </div>
+</div>
+  </form>
+    </div>
+    <!--FOOTER-->
+<%- include("partials/footer.ejs")%>
+</body>
+</html>

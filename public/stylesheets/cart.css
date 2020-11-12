@@ -1,0 +1,38 @@
+body{
+  
+    background-color: #222222;
+
+}
+.carrito{
+    background-color: #e4e4e4;
+    padding-bottom: 10px;
+}
+.img-fluid{
+    height: 200px;
+    width: 200px;
+}
+.detalle-producto{
+    display: inline-flex;
+   
+    text-align: center;
+    
+}
+.titulo{
+    border-bottom: 1px solid black;
+}
+
+.detalle-de-compra{
+    background-color: #e4e4e4;
+    padding: 5px;
+    
+}
+.titulo2{
+    border-bottom: 1px solid black;
+}
+.continuar{
+    border-radius: 10px;
+    background-color:  #044343;
+    color:white ;
+    margin: 10px;
+
+}

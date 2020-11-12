@@ -1,0 +1,71 @@
+/*custom font*/
+@import url(https://fonts.googleapis.com/css2?family=Convergence&display=swap);
+
+/*form styles*/
+.registro {
+  margin-top: 1vh;
+  margin-bottom: 5vh;
+  display: flex;
+}
+.registro .Usuario,
+.registro .Datos{
+  background: #e4e4e4;
+
+  border-radius: 3px;
+
+  padding: 20px 30px;
+
+  align-content: center;
+}
+/*inputs*/
+.registro .Usuario,
+.registro .Datos
+{
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid #045757;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  color: #045757;
+  font-size: 12px;
+}
+
+/*boton*/
+.registro .Tarjeta .btn {
+  background-color: #045757;
+  color: #e4e4e4;
+}
+
+/*headings*/
+.fs-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #045757;
+  margin-bottom: 10px;
+}
+/*boton*/
+
+.btEnviar {
+  flex-wrap: wrap;
+  display: flex;
+  background-color: #e4e4e4;
+  color: #045757;
+  border-radius: 3px;
+  
+  
+}
+.registro .radial{
+  background-color: #e4e4e4;
+  color: #045757;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  border-radius: 3px;
+  padding: 1vh;
+ 
+}
+.registro .Usuario,
+.registro .Datos {
+  display: flex;
+  flex-wrap: wrap;
+}

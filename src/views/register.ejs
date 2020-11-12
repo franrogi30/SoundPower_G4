@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include("partials/head") %>
+
+  <body>
+    <%- include("partials/navbar") %> <%- include("partials/social") %>
+
+    <!--FORMULARIO DE CARGA-->
+
+    <div class="registro container">
+      <div class="row">
+      
+       <% if (typeof errors != 'undefined') { %>
+  
+       <% for( let i = 0; i < errors.length; i++) { %> 
+        <li style="color:red;">
+          <%= errors[i].msg %>
+        </li><br>
+       <% } %> 
+       <% } %> 
+
+       <form action="/users/register" method="POST" enctype="multipart/form-data">
+        <fieldset >
+          <div class="Usuario col-12 col-lg-6">
+            <h2 class="fs-title">Crea tu Usuario</h2>
+            <label class="col-12" for="email">Email</label>
+            <input
+              class="col-12"
+              type="text"
+              name="email"
+              placeholder="Email"
+            />
+            <label class="col-12" for="password">Contraseña</label>
+            <input
+              class="col-12"
+              type="password"
+              name="pass"
+              placeholder="Password"
+            />
+            <label class="col-12" for="password">Repita Contraseña</label>
+            <input
+              class="col-12"
+              type="password"
+              name="cpass"
+              placeholder="Confirma Password"
+            />
+            <label class="col-12" for="avatar"> Subi una imagen</label>
+         <input class="col-12" type="file" name="avatar">
+        </fieldset>
+        <fieldset>
+          <div class="Datos col-12 col-lg-6">
+            <h2 class="fs-title">Datos Personales</h2>
+            <label class="col-12" for="email">Nombre</label>
+            <input
+              class="col-12"
+              type="text"
+              name="fname"
+              placeholder="Nombre"
+            />
+            <label class="col-12" for="email">Apellido</label>
+            <input
+              class="col-12"
+              type="text"
+              name="lname"
+              placeholder="Apellido"
+            />
+            <label class="col-12" for="email">Telefono</label>
+            <input
+              class="col-12"
+              type="text"
+              name="phone"
+              placeholder="Telefono"
+            />
+            <label class="col-12 col-lg-6" for="address">Domicilio</label>
+            <input class="col-12" name="address" placeholder="Direccion" />
+          </div>
+        </fieldset>
+        <div class="radial col-6">
+          <div class="row">
+          <input type="radio" class="col-4" name="rol" value="guest" checked>Usuario 
+          <input type="radio" class="col-4" name="rol" value="admin">Administrador
+          
+        </div>
+      </div>
+            <div class="btEnviar col-1">
+              <button class="btn btn-submit" type="submit">Enviar</button>
+            </div>
+          
+        
+       </form>
+    
+       </div>
+    </div>
+    <%- include("partials/footer") %>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+.Error {
+   margin-top:5vh ;
+   margin-bottom: 5vh;
+}
+
+.Error h1{
+    text-align: center;
+ color: #e4e4e4;
+}
+.Error h2{
+    text-align: center;
+color: #e4e4e4;
+}
+
+
+@media(min-width:580px){
+    .Error {
+        width: auto;
+        margin-top: 20vh;
+        margin-bottom: 20vh;
+        border: 1px solid #e4e4e4;
+        padding: 10vh 20vh;
+    }
+    
+    .Error h1{
+        width: auto;
+    text-align: center;
+    background-color: #e4e4e4;
+    justify-content: center;
+    color: #045757;
+    font-size: 5vh;
+    }
+    .Error h2{
+    width: auto;
+    text-align: center;
+    background-color: #e4e4e4;
+    opacity: 0.6;
+    color: #044343;
+    font-size: 4vh;
+    justify-content: center;
+    }
+    
+}

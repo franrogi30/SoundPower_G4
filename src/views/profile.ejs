@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include("partials/head")%>
+
+  <body>
+    <%- include("partials/navbar") %>
+   <%- include("partials/social") %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <section class="perfilUsuario">
+            <div class="row perfil">
+
+                <div class="titulo col-12">
+                    <h2>
+                        <%= title %>
+                    </h2>
+                </div>
+                   <div class="contenido">
+                       
+                              <form action="/users/profile" method="POST">
+                                <fieldset>
+                                  <div class="Datos col-12 col-lg-6">
+                                    <h2 class="fs-title">Datos Personales</h2>
+                                    <label class="col-12" for="name">Nombre</label>
+                                    <input
+                                      class="col-12"
+                                      type="text"
+                                      name="fname"
+                                      placeholder="<%= user.nombre %>"
+                                    />
+                                    <label class="col-12" for="lname"><Apellido></label>
+                                    <input
+                                      class="col-12"
+                                      type="text"
+                                      name="lname"
+                                      placeholder = '<%= user.apellido %>' 
+                                    />
+                                    <label class="col-12" for="phone">Telefono</label>
+                                    <input
+                                      class="col-12"
+                                      type="text"
+                                      name="phone"
+                                      placeholder="<%= user.telefono %>"
+                                    />
+                                    <label class="col-12 col-lg-6" for="address">Domicilio</label>
+                                    <input class="col-12" name="address" placeholder="<%= user.direccion %>" />
+                                  </div>
+                                </fieldset>
+                                <fieldset >
+                                  <div class="Usuario col-12 col-lg-6">
+                                    <h2 class="fs-title">Crea tu Usuario</h2>
+                                    <label class="col-12" for="email">Email</label>
+                                    <input
+                                      class="col-12"
+                                      type="text"
+                                      name="email"
+                                      placeholder="<%= user.email %>"
+                                    />
+                                    <label class="col-12" for="password">Contraseña</label>
+                                    <input
+                                      class="col-12"
+                                      type="password"
+                                      name="pass"
+                                      placeholder="<%= user.contraseña %>"
+                                    />
+                                    <label class="col-12" for="password">Repita Contraseña</label>
+                                    <input
+                                      class="col-12"
+                                      type="password"
+                                      name="cpass"
+                                      placeholder="<%= user.contraseña %>"
+                                    />
+                                  
+                                </fieldset>
+                               
+                               
+                                    <div class="btEnviar col-2">
+                                      <button class="btn btn-submit" type="submit">Actualizar</button>
+                                    </div>
+                                  
+                                
+                               </form>
+                            </div>
+
+
+                             
+                              
+                            </div>
+                        </div>
+                
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+        </div>
+      </div>
+    </div>
+    <%- include("partials/footer") %>
+  </body>
+</html>

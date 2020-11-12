@@ -1,0 +1,25 @@
+[
+    {
+        "id":1,
+        "q":"Como comprar",
+        "a":"PRIMERO Seleccioná los productos que quieras y agregalos al carrito. DESPUÉS Procesamos tu compra en nuestra tienda utilizando la tecnología de Mercado Libre. Te llevaremos para que realices el pago de forma ágil y segura a través de pagos con débito, crédito y efectivo. FINALMENTE elegí la forma de entrega que prefieras ¡y listo!"
+    },
+    {
+        "id":2,
+        "q":"Puedo pagar en cuotas",
+        "a":"Podrás ver en la página del producto si se puede pagar en cuotas y con qué medios. Si decidís comprarlo, antes de pagar podrás elegir la cantidad de cuotas y te informaremos el valor de cada una."
+      
+    },
+    {
+        "id":3,
+        "q":"Como puedo realizar cambio y devoluciones",
+        "a":"Los cambios y devoluciones se hacen de lunes a viernes en nuestra tienda online y física. Te enviaremos un email con una etiqueta de envío para que imprimas y pegues en el paquete para llevarlo al correo ¡y listo!"
+        
+    },
+    {
+        "id":4,
+        "q":"Hacen envios a domicilio",
+        "a":"si, realizamos envios a domicilio por Correo Argentino y Via Cargo"
+        
+    }
+]

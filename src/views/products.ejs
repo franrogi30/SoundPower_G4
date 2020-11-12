@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include("partials/head")%>
+
+  <body>
+    <%- include("partials/navbar") %> 
+    <%- include("partials/social") %>
+    
+<div class="container">
+    <section class="listadoProductos">
+    <div class="row products">
+        <div class="col-12">
+              <h2>
+              <%= title %>
+              </h2>
+          <div class="filas">
+                        <% producto.forEach(producto => { %>
+
+                                    
+                             <article>
+                               <figure>
+                                   
+                                <a href="/products/details/<%= producto.id %> "><img src="/images/products/<%- producto.image %>  " alt=" ">
+                                    <%- producto.name %>
+                       </a>
+                                    </figure>
+                                    
+                                     
+                                                
+                                             <h5>
+                                                 <%- producto.price %>
+                                             </h5> 
+                                            
+                                    </article>
+                                
+
+                            <% }) %> 
+                        </div>
+                    </div>
+                  
+                </section>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+    <%- include("partials/footer") %>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+.faqs{
+background-color: #e4e4e4;
+margin-top: 8vh;
+margin-bottom: 3vh;
+border-radius: 5px;
+}
+.faqs h1{
+    background-color: #045757;
+    color: #e4e4e4;
+    border-radius: 5px;
+}

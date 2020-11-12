@@ -1,0 +1,121 @@
+<header class="container-fluid">
+  <!--caja contenedora de boostrap-->
+  
+    <!--barra de navegación-->
+    <nav class="row navbar-expand-md">
+    
+        <!--caja que contiene el logotipo-->
+        <div class="col-12 col-md-1 col-lg-4">
+          <a href="/"><img id="logo" src="/images/logoHeader.png" alt="logo" /></a>
+        </div>
+    
+  
+      <!--boton para que desplegar el menu en movil-->
+      <button
+        class="navbar-toggler burger"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+      <i class="fas fa-bars"></i>
+      </button>
+
+      <!--barra de menu que aparece a partir de la vesión de tablet-->
+      <div
+        class="links collapse navbar-collapse col-6 col-md-6 col-lg-4"
+        id="navbarSupportedContent">
+        <!--barra de menu -->
+        <ul class="menu navbar-nav mr-auto">
+          <li>
+            <a href="/products ">Productos</a>
+          </li>
+          <li>
+            <a href="/products/discount">Oportunidades</a>
+          </li>
+          <li>
+            <a href="/contact">Contacto</a>
+          </li>
+        </ul>
+      </div>
+      <!--barra de menu: login, Busqueda--> 
+        <!--User-->
+
+      <div class="dropdown col-6 col-md-2 col-lg-2">
+        <button
+          class="btn  dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+        <% if (typeof user != "undefined" && user) { %>
+          <%= user.nick %> <img src="/images/logos/<%=user.avatar %> " alt="avatar" width="50px" height="50px" class="avatar">
+        <% }else{ %>
+          Usuario  <i class="far fa-user-circle"></i>
+        <% } %>
+          
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% if (typeof user != "undefined" && user) { %>
+            
+              <a class="dropdown-item" href="/users/profile">Perfil</a>
+              <a class="dropdown-item" href= "/products/cart">Carrito</a>
+             
+          <% }else{ %>
+            <a class="dropdown-item" href="/users/login">Ingresa</a>
+            <a class="dropdown-item" href="/users/register">Registrate</a>
+          <% } %>
+         </div>
+        </div>
+        <div class="salida" >
+        <% if (typeof user != "undefined" && user) { %>
+        <a href="/users/logout">SALIR</a>
+           
+         <% } %>
+        </div>
+       <!--busqueda-->
+    
+
+       <div class="dropdown col-2 col-md-1 col-1">
+      <div class="dropdown hierarchy-select" id="example">
+                  <button
+                    type="button"
+                    class="btn dropdown-toggle"
+                    id="example-two-button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  ><i class="fas fa-search"></i></button>
+                  <div
+                    class="dropdown-menu">
+                    <form action="/products/search" method="get" class="search-form">
+                      <input type="text" name="search" placeholder="Búsqueda" class="search-form_input">
+                      </button>
+                  </form>
+                    </div>
+                  </div>
+                  <input
+                    class="d-none"
+                    name="example_two"
+                    readonly="readonly"
+                    aria-hidden="true"
+                    type="text"
+                  />
+                </div>
+        
+      </div>
+    
+  
+      <!--finaliza caja contenedora del menu-->
+    </nav>
+  
+
+  <!--finaliza caja contenedora bootstrap-->
+</header>
+
+
+

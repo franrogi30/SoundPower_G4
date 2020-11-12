@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <%- include("partials/head")%>
+
+  <body>
+    <%- include("partials/navbar") %> 
+    <%- include("partials/social") %>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8">
+                <div class="carrito">
+                <div class="titulo">
+                   <h3>CARRITO</h3> 
+                </div>
+                
+            <div class="images">
+             <img src="../public/images/guitarra-azul-fender.jpg" alt="..." class="img-fluid">
+             <div class="detalle-producto">
+             <span><%- product.name%></span> <br>
+             <span><%-product.price%>:</span>
+             
+             </div>
+            </div>
+            </div>
+            
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
+              <div class="detalle-de-compra">
+                  
+            <div class="titulo2">
+                <h3>DETALLE DE COMPRA</h3>
+            </div>
+                  <form action="">
+                      <label><span>Articulo/os:</span> </label> <br>
+                      
+                      <label for=""><span>Costo de envio:</span></label><br> 
+    ​
+                      <label for=""><span>Total de impuestos:</span></label> <br> 
+    ​
+                      <label for=""><span>Total:</span> </label> <br> 
+                     <button class="continuar" type="submit"> CONTINUAR CON LA COMPRA</button>
+                  </form>
+              </div>
+            <a href="">Seguir Comprando</a>
+    </div>
+    <%- include("partials/footer") %>
+  </body>
+</html>

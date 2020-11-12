@@ -1,0 +1,35 @@
+.modifica h1{
+    text-align: center;
+    background-color: #045757;
+    color: #e4e4e4;
+    border-radius: 3px;
+}
+.modifica{
+    background-color:  #e4e4e4;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    border-radius: 5px;
+
+}
+.modifica .formulario{
+    justify-content: space-around;
+}
+ 
+.boton{
+    border-radius: 10px;
+    background-color:  #044343;
+    color:white;
+
+}
+.fotos{
+ margin: 10px;
+}
+.btn-primary{
+    margin: 10px;
+    background-color:#044343;
+    color: white;
+}
+
+.navbar-expand-md{
+    position: static;
+     }

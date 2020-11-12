@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("partials/head.ejs")%>
+<body>
+   <%- include("partials/navbar.ejs")%>
+   <%- include("partials/social.ejs")%>
+  
+    <div class="reach container">
+      
+<div class="row">
+  <h1 class="col-12">Contactanos</h1> 
+ <div class="formulario col-12 col-md-6 col-lg-6">
+       <!--FORMULARIO-->
+  <form action="/contact" method="POST">
+  
+    <label for="Nombre"> Nombre</label>
+      <input type="text" class="col-12">
+    <label for="contacto">Número de contacto (+54)</label> 
+     <input type="text" class="contacto col-12" placeholder="ej: 11-12345678">
+   <label for="titulo de anuncio"> Contanos tu consulta</label> 
+     <input type="text" class="col-12" placeholder="titulo">
+
+
+         <label>Descripción</label> 
+        <textarea class="col-12" name="descripcion" rows="12" ></textarea> 
+
+    </div>
+       <div class="col-12 col-md-6 col-lg-6">
+         <div class="mapa">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6568.019663754195!2d-58.3846687719161!3d-34.603912890944976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacf8f55dcf5%3A0xd073935716337382!2sSan%20Nicol%C3%A1s%2C%20CABA!5e0!3m2!1ses-419!2sar!4v1597790819467!5m2!1ses-419!2sar" width="600" height="450" frameborder="0" style="border:0;" class="col-12" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+         </div>
+        </div>
+            <div class="contact"> 
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+           
+          </form>
+    </div>
+</div>
+  </form>
+    </div>
+    <!--FOOTER-->
+<%- include("partials/footer.ejs")%>
+</body>
+</html>
