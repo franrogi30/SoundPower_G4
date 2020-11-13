@@ -68,7 +68,7 @@ module.exports = {
             id: id,
             producto: producto,
             price:producto.price,
-            image:(req.files[0]) ? req.files[0].filename : producto.image,
+          
             description:producto.description,
             category:producto.category
 

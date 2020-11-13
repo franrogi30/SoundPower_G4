@@ -78,6 +78,22 @@ module.exports = {
     return res.redirect("/");
   },
 
+profiles:(req,res)=>{
+users= db.users.findAll()
+.then ((users) =>{
+  res.render("users", {
+    user:db.users,
+    title:"usuarios".toUpperCase()
+  }
+
+)
+})
+},
+
+adminProfiles: (req,res)=>{
+
+},
+
   profile: (req, res) => {
     db.users.findByPk(req.session.user.id)
       .then((user) => {

@@ -33,12 +33,28 @@
           <li>
             <a href="/products ">Productos</a>
           </li>
-          <li>
-            <a href="/products/discount">Oportunidades</a>
-          </li>
-          <li>
-            <a href="/contact">Contacto</a>
-          </li>
+          <% if (typeof user != "undefined" && user) { %>
+            <% if ( user.rol== "admin" ) { %>
+              <li><a class="dropdown-item" href='/users/admin'> Adminitrar Perfiles</a></li>
+              <li><a class="dropdown-item" href='/products/add' >Agregar Producto</a></li>
+              <% }else{ %> 
+                <li>
+                  <a href="/users/comunity">Comunidad</a>
+                </li>
+                <li>
+                  <a href="/contact">Contacto</a>
+                </li>
+          <% } %>
+              <% }else{ %>
+                <li>
+                  <a href="/products/discount">Oportunidades</a>
+                </li>  
+                <li>
+                  <a href="/contact">Contacto</a>
+                </li>
+          <% } %>
+          
+          
         </ul>
       </div>
       <!--barra de menu: login, Busqueda--> 
@@ -63,9 +79,9 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <% if (typeof user != "undefined" && user) { %>
             <% if ( user.rol== "admin" ) { %>
-                 <a class="dropdown-item" href='/users/profile'> Adminitrar Perfil</a>
+                 <a class="dropdown-item" href='/users/profile'> Perfil</a>
                 
-                 <a class="dropdown-item" href='/products/add' >Agregar Producto</a>
+               
               <% }else{ %> 
              
               <a class="dropdown-item" href="/users/profile">Perfil</a>

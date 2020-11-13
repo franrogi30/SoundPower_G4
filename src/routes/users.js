@@ -26,4 +26,7 @@ router.post('/profile',upAvatar.any(),profileValidator,controller.processProfile
 router.get('/logout', controller.logout)
 router.post('/logout', controller.logout)
 
+//admin users
+router.get('/admin', controller.profiles)
+
 module.exports = router;
