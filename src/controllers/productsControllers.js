@@ -39,7 +39,7 @@ module.exports = {
     },
     publicar: (req, res, next) =>{
 
-        db.Products.create({
+        dbProducts.create({
             
         nombre: req.body.titulo,
         descripcion: req.body.descripcion,
@@ -60,13 +60,13 @@ module.exports = {
     },
     modify: (req,res)=>{
         let id = req.params.id;
-        let producto = db.Products.filter(producto => {
+        let producto = dbProducts.filter(producto => {
             return producto.id == id
         })
         res.render('modifyProduct', {
             title: "Modificar Productos",
             id: id,
-            producto: producto[0],
+            producto: producto,
             price:producto.price,
             image:(req.files[0]) ? req.files[0].filename : producto.image,
             description:producto.description,

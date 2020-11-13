@@ -1,4 +1,4 @@
-//const dbusers = require('../data/dbusers');
+
 const {check, validationResult,body} = require('express-validator');
 const db = require('../database/models');
 const bcrypt = require("bcrypt");
@@ -8,7 +8,7 @@ module.exports= [
     check('pass').isLength({min:1}).withMessage('contraseña invalida'),
     body('pass')
     .custom((value,{req})=>{
-        console.log("**********")
+       
         return db.users.findOne({
             where:{
                 email:req.body.email

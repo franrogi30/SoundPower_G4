@@ -1,6 +1,7 @@
 <header class="container-fluid">
   <!--caja contenedora de boostrap-->
-  
+
+  </script>
     <!--barra de navegación-->
     <nav class="row navbar-expand-md">
     
@@ -53,7 +54,7 @@
           aria-expanded="false"
         >
         <% if (typeof user != "undefined" && user) { %>
-          <%= user.nick %> 
+          <%= user.nick %> <img src="/images/users/<%=user.avatar %> " alt="avatar" width="50px" height="50px" class="avatar">
         <% }else{ %>
           Usuario  <i class="far fa-user-circle"></i>
         <% } %>
@@ -61,7 +62,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <% if (typeof user != "undefined" && user) { %>
-            <% if ( user.rol= "admin" ) { %>
+            <% if ( user.rol== "admin" ) { %>
                  <a class="dropdown-item" href='/users/profile'> Adminitrar Perfil</a>
                 
                  <a class="dropdown-item" href='/products/add' >Agregar Producto</a>
@@ -79,7 +80,7 @@
         </div>
         <div class="salida" >
         <% if (typeof user != "undefined" && user) { %>
-        <a href="/users/logout">SALIR</a>
+        <a href="/users/logout" id="salida">SALIR</a>
            
          <% } %>
         </div>

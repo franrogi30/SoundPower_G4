@@ -73,8 +73,8 @@
               class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
               id="lname"  name="lname"  value="<%= (typeof old != 'undefined' && old.lname)?old.lname:'' %>" placeholder="Apellido" title="El apellido debe tener más de dos caracteres"/>
               <small id="errorLname" class="text-danger"><%= (typeof errors != 'undefined' && errors.lname)?errors.lname.msg: "" %> </small>
-              placeholder="Apellido"
-            />
+          
+            
             <label class="col-12" for="email">Telefono</label>
             <input
               class="col-12"
