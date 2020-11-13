@@ -79,12 +79,12 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <% if (typeof user != "undefined" && user) { %>
             <% if ( user.rol== "admin" ) { %>
-                 <a class="dropdown-item" href='/users/profile'> Perfil</a>
+                 <a class="dropdown-item" href='/users/profile/ <%= user.id %>'> Perfil</a>
                 
                
               <% }else{ %> 
              
-              <a class="dropdown-item" href="/users/profile">Perfil</a>
+              <a class="dropdown-item" href="/users/profile/ <%= user.id %>">Perfil</a>
               <a class="dropdown-item" href= "/products/cart">Carrito</a>
              
           <% } %>

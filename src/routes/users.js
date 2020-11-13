@@ -18,14 +18,13 @@ router.get('/login', controller.Login)
 router.post('/login',controller.processLogin)
 
 //profile page
-router.get('/profile',controller.profile)
-router.post('/profile',upAvatar.any(),profileValidator,controller.processProfile)
+router.get('/profile/:id',controller.profile)
+router.post('/profile/:id',upAvatar.any(),profileValidator,controller.processProfile)
 
 
 // logout
-router.get('/logout', controller.logout)
 router.post('/logout', controller.logout)
-
+router.get('/logout', controller.logout)
 //admin users
 router.get('/admin', controller.profiles)
 

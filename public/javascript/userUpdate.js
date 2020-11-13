@@ -7,7 +7,7 @@ const qs = function (element){
 window.addEventListener('load',function(){
     console.log('JS vinculado correctamente...');
 
-    let formRegister = qs('form#register');
+    let formRegister = qs('form#profile');
 
     let elementos = formRegister.elements;
 

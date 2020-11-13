@@ -8,6 +8,8 @@ const Sequelize = require("sequelize");
 let Op = Sequelize.Op;
 
 module.exports = {
+
+// registro de usuarios y administradores
   register: (req, res) => {
     res.render("register");
   },
@@ -35,7 +37,7 @@ module.exports = {
     }      
   }
   ,
-
+ // login  y logout
   Login: (req, res) => {
     res.render("login", {
       title: "Ingresá a tu cuenta",
@@ -62,7 +64,7 @@ module.exports = {
           res.render("index", {
             
             userSession: req.session.user,
-            user: user,
+            //user: user,
             avatar:user.avatar
 
           });
@@ -78,8 +80,9 @@ module.exports = {
     return res.redirect("/");
   },
 
+  //base de datos de perfiles
 profiles:(req,res)=>{
-users= db.users.findAll()
+db.users.findAll()
 .then ((users) =>{
   res.render("users", {
     user:db.users,
@@ -94,14 +97,18 @@ adminProfiles: (req,res)=>{
 
 },
 
+
+//perfil de usuario
   profile: (req, res) => {
     db.users.findByPk(req.session.user.id)
       .then((user) => {
+   console.log(user); 
         res.render("profile", {
           user: user,
           userSession: req.session.user,
           nick: user.nombre + " " + user.apellido,
-          rol: req.body.rol
+          rol: req.body.rol,
+          id:user.id
         });
       })
       .catch((error) => res.send(error));
@@ -111,16 +118,20 @@ adminProfiles: (req,res)=>{
     let errors = validationResult(req);
     if (errors.isEmpty()) {
       db.users.update({
-        nombre: req.body.fname,
-        apellido: req.body.lname,
+        
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
         email: req.body.email,
-        direccion: req.body.address,
-        telefono: req.body.phone,
+        direccion: req.body.direccion,
+        telefono: req.body.telefono,
         contraseña: bcrypt.hashSync(req.body.pass, 10),
         
       })
         .then((result) => {
-          return res.redirect("/users/profile");
+          return res.redirect("/users/profile/: <%= user.id %>",{
+            userSession: req.session.user,
+            nick: user.nombre + " " + user.apellido,
+          });
         })
         .catch((err) => {
           console.log(err);
