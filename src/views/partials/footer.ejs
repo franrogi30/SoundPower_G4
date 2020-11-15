@@ -29,12 +29,21 @@
         <li><a href="Faqs">Preguntas</a></li>
         <li><a href="contact">Contacto</a></li>
         <% if (typeof user != "undefined" && user) { %>
-          <li><a href="/users/profile">Perfil de usuario</a></li>
-          <li><a href="/products/cart">Carrito</a></li>
-        <% }else{ %>
-          <li><a href="/users/login">Ingresá</a></li>
-          <li><a href="/users/register">Registrate</a></li>
+          <% if ( user.rol== "admin" ) { %>
+              <li><a class="dropdown-item" href='/users/profile'> Adminitrar Perfil</a></li> 
+              
+             <li><a class="dropdown-item" href='/products/add' >Agregar Producto</a></li>
+            <% }else{ %> 
+           
+            <li><a class="dropdown-item" href="/users/profile">Perfil</a></li>
+            <li><a class="dropdown-item" href= "/products/cart">Carrito</a></li>
+           
         <% } %>
+            <% }else{ %>
+          <li><a class="dropdown-item" href="/users/login">Ingresa</a></li>
+          <li><a class="dropdown-item" href="/users/register">Registrate</a></li>
+        <% } %>
+       </div>
         
       </ul>
     </div>

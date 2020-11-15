@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <%- include("partials/head")%>
-
+  <script src="/javascript/userUpdate.js"></script>
   <body>
     <%- include("partials/navbar") %>
    <%- include("partials/social") %>
@@ -13,35 +13,44 @@
             <div class="row perfil">
 
                 <div class="titulo col-12">
-                    <h2>
-                      Perfil del usuario
+                    <h2 style="text-align: center;">
+                      Perfil de <%= nick.toUpperCase( ) %>
                     </h2>
                 </div>
-                   <div class="contenido">
-                       
-                              <form action="/users/profile" method="POST">
-                                <fieldset>
-                                  <img src="<% user.avatar %>" alt="avatar usuario">
-                                </fieldset>
-                                
-                                <fieldset>
+                   <div class="contenido col-12">
+                    <div class="row">
+      
+                      <% if (typeof errors != 'undefined') { %>
+                 
+                      <% for( let i = 0; i < errors.length; i++) { %> 
+                       <ul>
+                       <li  style="color:red; display: block; " >
+                         <%= errors[i].msg %>  
+                       </li>
+                     </ul><br>
+                      <% } %> 
+                      <% } %> 
+               
+                      <form id="register" action="/users/register" method="POST" enctype="multipart/form-data">
+                       <fieldset >
                                   
-                                  <div class="Datos col-12 col-lg-6">
+                                  <div class="Datos col-12 col-lg-8">
                                     <h2 class="fs-title">Datos Personales</h2>
-                                    <label class="col-12" for="name">Nombre</label>
+                                    <label class="col-12" for="email">Nombre</label>
                                     <input
-                                      class="col-12"
                                       type="text"
-                                      name="fname"
-                                      placeholder="<%= user.nombre %>"
-                                    />
-                                    <label class="col-12" for="lname"><Apellido></label>
+                                      class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
+                                                id="fname"  name="fname"  value="<%= (typeof old != 'undefined' && old.fname)?old.fname:'' %>" 
+                                                title="El nombre debe tener más de dos caracteres"/>
+                                                <small id="errorFname" class="text-danger"><%= (typeof errors != 'undefined' && errors.fname)?errors.fname.msg: "" %> </small>
+                                    
+                                    <label class="col-12" for="email">Apellido</label>
                                     <input
-                                      class="col-12"
                                       type="text"
-                                      name="lname"
-                                      placeholder = '<%= user.apellido %>' 
-                                    />
+                                      class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
+                                      id="lname"  name="lname"  value="<%= (typeof old != 'undefined' && old.lname)?old.lname:'' %>"  title="El apellido debe tener más de dos caracteres"/>
+                                      <small id="errorLname" class="text-danger"><%= (typeof errors != 'undefined' && errors.lname)?errors.lname.msg: "" %> </small>
+                                    
                                     <label class="col-12" for="phone">Telefono</label>
                                     <input
                                       class="col-12"
@@ -49,40 +58,42 @@
                                       name="phone"
                                       placeholder="<%= user.telefono %>"
                                     />
-                                    <label class="col-12 col-lg-6" for="address">Domicilio</label>
+                                    <label class="col-12 col-lg-8" for="address">Domicilio</label>
                                     <input class="col-12" name="address" placeholder="<%= user.direccion %>" />
                                   </div>
                                 </fieldset>
                                 <fieldset >
-                                  <div class="Usuario col-12 col-lg-6">
+                                  <div class="Usuario col-12 col-lg-8">
                                     <h2 class="fs-title">Crea tu Usuario</h2>
+                                    <div class="form-row">
+                                      <div class="form-group col-12 ">
                                     <label class="col-12" for="email">Email</label>
                                     <input
-                                      class="col-12"
                                       type="text"
-                                      name="email"
-                                      placeholder="<%= user.email %>"
-                                    />
+                                       class="form-control col-12" <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":(typeof errors != 'undefined' && errors.email)?"is-invalid": ""  %>"
+                                                id="email" value="<%= (typeof old != 'undefined' && old.email)?old.email:'' %>"  
+                                                name="email"/>
+                                                <small id="errorEmail" class="text-danger"><%= (typeof errors != 'undefined' && errors.email)?errors.email.msg: "" %> </small>
                                     <label class="col-12" for="password">Contraseña</label>
                                     <input
-                                      class="col-12"
                                       type="password"
-                                      name="pass"
-                                      placeholder="<%= user.contraseña %>"
-                                    />
+                                      class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
+                                                id="pass" placeholder="contraseña" name="pass"/>
+                                                <small id="errorPass" class="text-danger"><%= (typeof errors != 'undefined' && errors.pass)?errors.pass.msg: "" %> </small>
+                                              </div>
+                                    
                                     <label class="col-12" for="password">Repita Contraseña</label>
                                     <input
-                                      class="col-12"
                                       type="password"
-                                      name="cpass"
-                                      placeholder="Repita contraseña"
-                                    />
-                                  
-                                </fieldset>
+                                      class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
+                                                id="cpass" placeholder="contraseña" name="cpass"/>
+                                                <small id="errorCpass" class="text-danger"><%= (typeof errors != 'undefined' && errors.cpass)?errors.cpass.msg: "" %> </small>
+                                    </div>
+                                   </fieldset>
                                
                                
-                                    <div class="btEnviar col-2">
-                                      <button class="btn btn-submit" type="submit">Actualizar</button>
+                                    <div class="btEnviar col-4">
+                                      <button class="btn btn-submit" type="submit" style="text-align: center;">Actualizar</button>
                                     </div>
                                   
                                 

@@ -1,6 +1,7 @@
 <header class="container-fluid">
   <!--caja contenedora de boostrap-->
-  
+
+  </script>
     <!--barra de navegación-->
     <nav class="row navbar-expand-md">
     
@@ -32,12 +33,28 @@
           <li>
             <a href="/products ">Productos</a>
           </li>
-          <li>
-            <a href="/products/discount">Oportunidades</a>
-          </li>
-          <li>
-            <a href="/contact">Contacto</a>
-          </li>
+          <% if (typeof user != "undefined" && user) { %>
+            <% if ( user.rol== "admin" ) { %>
+              <li><a class="dropdown-item" href='/users/admin'> Adminitrar Perfiles</a></li>
+              <li><a class="dropdown-item" href='/products/add' >Agregar Producto</a></li>
+              <% }else{ %> 
+                <li>
+                  <a href="/users/comunity">Comunidad</a>
+                </li>
+                <li>
+                  <a href="/contact">Contacto</a>
+                </li>
+          <% } %>
+              <% }else{ %>
+                <li>
+                  <a href="/products/discount">Oportunidades</a>
+                </li>  
+                <li>
+                  <a href="/contact">Contacto</a>
+                </li>
+          <% } %>
+          
+          
         </ul>
       </div>
       <!--barra de menu: login, Busqueda--> 
@@ -53,7 +70,7 @@
           aria-expanded="false"
         >
         <% if (typeof user != "undefined" && user) { %>
-          <%= user.nick %> 
+          <%= user.nick %> <img src="/images/users/<%=user.avatar %> " alt="avatar" width="50px" height="50px" class="avatar">
         <% }else{ %>
           Usuario  <i class="far fa-user-circle"></i>
         <% } %>
@@ -61,10 +78,10 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <% if (typeof user != "undefined" && user) { %>
-            <% if ( user.rol= "admin" ) { %>
-                 <a class="dropdown-item" href='/users/profile'> Adminitrar Perfil</a>
+            <% if ( user.rol== "admin" ) { %>
+                 <a class="dropdown-item" href='/users/profile/<%=user.id  %> '> Perfil</a>
                 
-                 <a class="dropdown-item" href='/products/add' >Agregar Producto</a>
+               
               <% }else{ %> 
              
               <a class="dropdown-item" href="/users/profile">Perfil</a>
@@ -79,7 +96,7 @@
         </div>
         <div class="salida" >
         <% if (typeof user != "undefined" && user) { %>
-        <a href="/users/logout">SALIR</a>
+        <a href="/users/logout" id="salida">SALIR</a>
            
          <% } %>
         </div>

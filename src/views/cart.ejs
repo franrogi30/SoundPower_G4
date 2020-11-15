@@ -6,31 +6,32 @@
   <body>
     <%- include("partials/navbar") %> 
     <%- include("partials/social") %>
-    <div class="container">
+    <div class="container carrito" style="margin-top: 8vh; margin-bottom: 5vh;">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8">
-                <div class="carrito">
-                <div class="titulo">
-                   <h3>CARRITO</h3> 
-                </div>
+            
                 
-            <div class="images">
-             <img src="../public/images/guitarra-azul-fender.jpg" alt="..." class="img-fluid">
-             <div class="detalle-producto">
-             <span><%- product.name%></span> <br>
-             <span><%-product.price%>:</span>
+                   <h3 class="titulo col-12" style="text-align: center; background-color: #045757;color: #e4e4e4; border-radius: 3px;" >CARRITO</h3> 
+                   <div class="row">
+                <section class="col-12 col-lg-4" style="padding-top: 2vh;">
+                <div class="images" >
+                <img src="../images/guitarra-azul-fender.jpeg" width="210px" height="210px" style="text-align: center;"  >
+                <div class="detalle-producto">
+                <p >Guitarra Fender</p><br> 
+                 <p>$27.000</p>
              
-             </div>
-            </div>
+              </div>
             </div>
             
+            
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-4">
+          </section>
+          <section class="col-12 col-lg-8" style="padding-top: 2vh;">
+            <div>
               <div class="detalle-de-compra">
                   
-            <div class="titulo2">
+                <div class="titulo2">
                 <h3>DETALLE DE COMPRA</h3>
-            </div>
+                </div>
                   <form action="">
                       <label><span>Articulo/os:</span> </label> <br>
                       
@@ -39,10 +40,14 @@
                       <label for=""><span>Total de impuestos:</span></label> <br> 
     ​
                       <label for=""><span>Total:</span> </label> <br> 
-                     <button class="continuar" type="submit"> CONTINUAR CON LA COMPRA</button>
+                     <button class="continuar" type="submit"> COMPRAR</button>
                   </form>
               </div>
-            <a href="">Seguir Comprando</a>
+              <a href="/products">Seguir Comprando</a>
+            </div>
+          </section>
+        </div>
+        </div>
     </div>
     <%- include("partials/footer") %>
   </body>

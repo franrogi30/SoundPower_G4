@@ -11,7 +11,12 @@ body {
     width: 100%;
     
   }
-  
+  .navbar-expand-md .avatar{
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    z-index:30 ;
+  }
   .navbar-expand-md{
    
     justify-content: space-around;
@@ -76,7 +81,8 @@ body {
     background-color: #045757;
     color: #e4e4e4;
     border-radius: 3px;
-   
+ 
+    padding-bottom: 10px;
   }
 
   .navbar-expand-md .salida a{
@@ -85,6 +91,10 @@ body {
     border-radius: 3px;
     text-decoration: none;
     text-align: center;
+    padding: 10px 2px;
+    
+    
+ 
    
   }
   
