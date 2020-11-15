@@ -79,31 +79,27 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <% if (typeof user != "undefined" && user) { %>
             <% if ( user.rol== "admin" ) { %>
-                 <a class="dropdown-item" href='/users/profile/ <%= user.id %>'> Perfil</a>
+                <a class="dropdown-item" href='/users/profile/:<%= user.id %>'> Perfil</a>
                 
-               
               <% }else{ %> 
-             
-              <a class="dropdown-item" href="/users/profile/ <%= user.id %>">Perfil</a>
+              <a class="dropdown-item" href="/users/profile/: <%= user.id %>">Perfil</a>
               <a class="dropdown-item" href= "/products/cart">Carrito</a>
-             
           <% } %>
               <% }else{ %>
             <a class="dropdown-item" href="/users/login">Ingresa</a>
             <a class="dropdown-item" href="/users/register">Registrate</a>
           <% } %>
-         </div>
+        </div>
         </div>
         <div class="salida" >
         <% if (typeof user != "undefined" && user) { %>
         <a href="/users/logout" id="salida">SALIR</a>
-           
-         <% } %>
+        <% } %>
         </div>
-       <!--busqueda-->
+      <!--busqueda-->
     
 
-       <div class="dropdown col-2 col-md-1 col-1">
+      <div class="dropdown col-2 col-md-1 col-1">
       <div class="dropdown hierarchy-select" id="example">
                   <button
                     type="button"

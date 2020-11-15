@@ -51,6 +51,20 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey : 'producto_id',//la clave foranea de este modelo en esa tabla intermedia
             otherKey : 'usuario_id'//la otra clave foranea del otro modelo en cuestion en esa tabla intermedia
         })
+        Product.belongsTo(models.Marcas, {
+            as: "products",
+            foreignKey: "idMarca", //clave foranea
+        })
+        Product.belongsToMany(models.Colors,{
+            as : 'color', // Products.colors
+            through : 'products_colors',//tabla intermedia 
+            foreignKey : 'producto_id',//la clave foranea de este modelo en esa tabla intermedia
+            otherKey : "coloror_id"//la otra clave foranea del otro modelo en cuestion en esa tabla intermedia
+        })
+        Product.belongsTo(models.Categories, {
+            as: "products",
+            foreignKey: "idCategoria", //clave foranea
+        })
     }
     return Product;
 }
