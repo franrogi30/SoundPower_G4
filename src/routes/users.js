@@ -23,9 +23,8 @@ router.post('/profile/:id',upAvatar.any(),profileValidator,controller.processPro
 
 
 // logout
-router.get('/logout', controller.logout)
 router.post('/logout', controller.logout)
-
+router.get('/logout', controller.logout)
 //admin users
 router.get('/admin', controller.profiles)
 

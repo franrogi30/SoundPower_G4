@@ -14,7 +14,7 @@
 
                 <div class="titulo col-12">
                     <h2 style="text-align: center;">
-                      Perfil de <%= nick.toUpperCase( ) %>
+                      <%=nick.toUpperCase()%>
                     </h2>
                 </div>
                    <div class="contenido col-12">
@@ -31,16 +31,16 @@
                       <% } %> 
                       <% } %> 
                
-                      <form id="register" action="/users/register" method="POST" enctype="multipart/form-data">
+                      <form id="profile" action="/users/profile" method="POST" enctype="multipart/form-data">
                        <fieldset >
                                   
                                   <div class="Datos col-12 col-lg-8">
                                     <h2 class="fs-title">Datos Personales</h2>
-                                    <label class="col-12" for="email">Nombre</label>
+                                    <label class="col-12" for="nombre">Nombre</label>
                                     <input
                                       type="text"
                                       class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
-                                                id="fname"  name="fname"  value="<%= (typeof old != 'undefined' && old.fname)?old.fname:'' %>" 
+                                                id="fname"  name="nombre" placeholder="<%= user.nombre%>" value="<%= (typeof old != 'undefined' && old.fname)?old.fname:'' %>" 
                                                 title="El nombre debe tener más de dos caracteres"/>
                                                 <small id="errorFname" class="text-danger"><%= (typeof errors != 'undefined' && errors.fname)?errors.fname.msg: "" %> </small>
                                     
@@ -48,18 +48,18 @@
                                     <input
                                       type="text"
                                       class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
-                                      id="lname"  name="lname"  value="<%= (typeof old != 'undefined' && old.lname)?old.lname:'' %>"  title="El apellido debe tener más de dos caracteres"/>
-                                      <small id="errorLname" class="text-danger"><%= (typeof errors != 'undefined' && errors.lname)?errors.lname.msg: "" %> </small>
+                                      id="lname"  name="apellido"  value="<%= (typeof old != 'undefined' && old.apellido)?old.apellido:'' %>"  title="El apellido debe tener más de dos caracteres"/>
+                                      <small id="errorLname" class="text-danger"><%= (typeof errors != 'undefined' && errors.apellido)?errors.lname.msg: "" %> </small>
                                     
                                     <label class="col-12" for="phone">Telefono</label>
                                     <input
                                       class="col-12"
                                       type="text"
-                                      name="phone"
+                                      name="telefono"
                                       placeholder="<%= user.telefono %>"
                                     />
-                                    <label class="col-12 col-lg-8" for="address">Domicilio</label>
-                                    <input class="col-12" name="address" placeholder="<%= user.direccion %>" />
+                                    <label class="col-12 col-lg-8" for="direccion">Domicilio</label>
+                                    <input class="col-12" name="direccion" placeholder="<%= user.direccion %>" />
                                   </div>
                                 </fieldset>
                                 <fieldset >
@@ -77,7 +77,7 @@
                                     <label class="col-12" for="password">Contraseña</label>
                                     <input
                                       type="password"
-                                      class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
+                                      class="form-control col-12" <%= (typeof errors != 'undefined' && errors.contraseña)?"is-invalid": ""  %>"
                                                 id="pass" placeholder="contraseña" name="pass"/>
                                                 <small id="errorPass" class="text-danger"><%= (typeof errors != 'undefined' && errors.pass)?errors.pass.msg: "" %> </small>
                                               </div>
