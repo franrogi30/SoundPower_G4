@@ -8,7 +8,6 @@ const { Result } = require('express-validator');
 
 module.exports = {
     products : (req, res) => {
-
         res.render('products',{
             
             title:"Productos",
@@ -18,28 +17,41 @@ module.exports = {
 
     },
     productsDetails : (req, res) => {
-        let id = req.params.id;
-        let producto = dbProducts.filter(producto => {
-            return producto.id == id
-        })
-        res.render('productDetails', {
-            title: "Detalle del Producto",
-            id: id,
-            producto: producto[0],
-            price:producto.price,
-            image:producto.image
-            
+        db.Products.findByPk(req.params.id)
+        .then(product => {
+            res.render('productDetails', {
+                title: "Detalle del Producto",
+                product: product 
             }
-    )
+        )
+    })
+
     },
     productsAdd : (req, res) => {
+        let categorias = db.Category.findAll({
+            order : [
+                ['nombre','ASC']
+            ]
+        }
+    )
+        let marcas = db.Marcas.findAll({
+            order : [
+                ['nombre','ASC']
+            ]
+        }
+    )
+    Promise.all([categorias,marcas])
+    .then(([categorias,marcas]) => {
         res.render('productAdd',{
-            title:"Agregar Productos"
+            title:"Agregar Productos",
+            categorias: categorias,
+            marcas: marcas
         })
+    })
     },
     publicar: (req, res, next) =>{
 
-        dbProducts.create({
+        db.Products.create({
             
         nombre: req.body.titulo,
         descripcion: req.body.descripcion,
@@ -117,14 +129,14 @@ module.exports = {
     }
     },
     delete : (req,res)=>{
-        let idProducto = req.params.id;
-        dbProducts.forEach(producto=>{
-            if(producto.id == idProducto){
-                let aEliminar = dbProducts.indexOf(producto);
-                dbProducts.splice(aEliminar,1);
+        db.Products.destroy ({
+            where: {
+                id: req.params.id
             }
+            .then(result =>{
+
+            })
         })
-        fs.writeFileSync(path.join(__dirname, '../data/productsDataBase.json'), JSON.stringify(dbProducts));
-        res.redirect('/users/profile')
+
     }
 }

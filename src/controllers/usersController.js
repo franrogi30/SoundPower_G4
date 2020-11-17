@@ -104,9 +104,8 @@ adminProfiles: (req,res)=>{
       .then((user) => {
    console.log(user); 
         res.render("profile", {
-          user: user,
+          userData: user,
           userSession: req.session.user,
-          nick: user.nombre + " " + user.apellido,
           rol: req.body.rol,
           id:user.id
         });
@@ -128,9 +127,8 @@ adminProfiles: (req,res)=>{
         
       })
         .then((result) => {
-          return res.redirect("/users/profile/: <%= user.id %>",{
+          return res.redirect("/users/profile/" + req.session.user.id,{
             userSession: req.session.user,
-            nick: user.nombre + " " + user.apellido,
           });
         })
         .catch((err) => {
