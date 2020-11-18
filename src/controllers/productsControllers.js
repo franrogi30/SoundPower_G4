@@ -8,16 +8,18 @@ const { Result } = require('express-validator');
 
 module.exports = {
     products : (req, res) => {
-        res.render('products',{
-            
-            title:"Productos",
-            producto: dbProducts,
-            
-        })
+        db.products.findAll()
+        .then((product) => {
+            res.render('products', {
+                title: "Productos",
+                product: product 
+            }
+        )
+    }).catch(console.log(error))
 
     },
     productsDetails : (req, res) => {
-        db.Products.findByPk(req.params.id)
+        db.products.findByPk(req.params.id)
         .then(product => {
             res.render('productDetails', {
                 title: "Detalle del Producto",
@@ -51,7 +53,7 @@ module.exports = {
     },
     publicar: (req, res, next) =>{
 
-        db.Products.create({
+        db.products.create({
             
         nombre: req.body.titulo,
         descripcion: req.body.descripcion,
@@ -129,7 +131,7 @@ module.exports = {
     }
     },
     delete : (req,res)=>{
-        db.Products.destroy ({
+        db.products.destroy ({
             where: {
                 id: req.params.id
             }
