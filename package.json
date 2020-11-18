@@ -25,7 +25,7 @@
     "sequelize": "^6.3.5",
     "session": "^0.1.0"
   },
-  "main": "/src/app.js",
+  "main": "./src/app.js",
   "author": "",
   "license": "ISC",
   "description": ""

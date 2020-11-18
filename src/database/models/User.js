@@ -31,7 +31,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull:false,
             unique:true,
         },
-        contraseña:{
+        password:{
             type:dataTypes.STRING(100),
             allowNull:false
         },
@@ -55,9 +55,9 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false,
         
     }
-    const User = sequelize.define(alias,cols,config);
+    let User = sequelize.define(alias,cols,config);
     User.associate = function(models){
-        User.belongsToMany(models.Products,{
+        User.belongsToMany(models.products,{
             as : 'productos', 
             through : 'cart',//tabla intermedia 
             foreignKey : 'usuario_id',//la clave foranea de este modelo en esa tabla intermedia

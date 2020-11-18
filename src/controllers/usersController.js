@@ -103,7 +103,7 @@ adminProfiles: (req,res)=>{
     
     db.users.findByPk(req.session.user.id)
       .then((user) => {
-   console.log(user); 
+          
         res.render("profile", {
           user: user,
           userSession: req.session.user,
@@ -129,9 +129,8 @@ adminProfiles: (req,res)=>{
         
       })
         .then((result) => {
-          return res.redirect("/users/profile/: <%= user.id %>",{
+          return res.redirect("/users/profile/"+req.session.user.id,{
             userSession: req.session.user,
-            nick: user.nombre + " " + user.apellido,
           });
         })
         .catch((err) => {
