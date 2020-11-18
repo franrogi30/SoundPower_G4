@@ -14,7 +14,7 @@
 
                 <div class="titulo col-12">
                     <h2 style="text-align: center;">
-                      <%=nick.toUpperCase()%>
+                      <%=userSession.nick.toUpperCase()%>
                     </h2>
                 </div>
                    <div class="contenido col-12">
@@ -40,7 +40,7 @@
                                     <input
                                       type="text"
                                       class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
-                                                id="fname"  name="nombre" placeholder="<%= user.nombre%>" value="<%= (typeof old != 'undefined' && old.fname)?old.fname:'' %>" 
+                                                id="fname"  name="nombre" placeholder="<%= userData.nombre%>" value="<%= (typeof old != 'undefined' && old.fname)?old.fname: userData.nombre %>" 
                                                 title="El nombre debe tener más de dos caracteres"/>
                                                 <small id="errorFname" class="text-danger"><%= (typeof errors != 'undefined' && errors.fname)?errors.fname.msg: "" %> </small>
                                     
@@ -48,7 +48,7 @@
                                     <input
                                       type="text"
                                       class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
-                                      id="lname"  name="apellido"  value="<%= (typeof old != 'undefined' && old.apellido)?old.apellido:'' %>"  title="El apellido debe tener más de dos caracteres"/>
+                                      id="lname"  name="apellido" placeholder="<%= userData.apellido%>"  value="<%= (typeof old != 'undefined' && old.apellido)?old.apellido: userData.apellido %>"  title="El apellido debe tener más de dos caracteres"/>
                                       <small id="errorLname" class="text-danger"><%= (typeof errors != 'undefined' && errors.apellido)?errors.lname.msg: "" %> </small>
                                     
                                     <label class="col-12" for="phone">Telefono</label>
@@ -56,10 +56,10 @@
                                       class="col-12"
                                       type="text"
                                       name="telefono"
-                                      placeholder="<%= user.telefono %>"
+                                      placeholder="<%= userData.telefono %>"
                                     />
                                     <label class="col-12 col-lg-8" for="direccion">Domicilio</label>
-                                    <input class="col-12" name="direccion" placeholder="<%= user.direccion %>" />
+                                    <input class="col-12" name="direccion" placeholder="<%= userData.direccion %>" />
                                   </div>
                                 </fieldset>
                                 <fieldset >
@@ -71,8 +71,8 @@
                                     <input
                                       type="text"
                                        class="form-control col-12" <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":(typeof errors != 'undefined' && errors.email)?"is-invalid": ""  %>"
-                                                id="email" value="<%= (typeof old != 'undefined' && old.email)?old.email:'' %>"  
-                                                name="email"/>
+                                                id="email" value="<%= (typeof old != 'undefined' && old.email)?old.email: userData.email %>"  
+                                                name="email" placeholder="<%= userData.email%>"/>
                                                 <small id="errorEmail" class="text-danger"><%= (typeof errors != 'undefined' && errors.email)?errors.email.msg: "" %> </small>
                                     <label class="col-12" for="password">Contraseña</label>
                                     <input
