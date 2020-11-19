@@ -21,11 +21,7 @@
        <% } %> 
        <% } %> 
 
-<<<<<<< HEAD
-       <form action="/users/register" method="POST" enctype="multipart/form-data" id="register">
-=======
        <form id="register" action="/users/register" method="POST" enctype="multipart/form-data">
->>>>>>> 6c67421b0e23654fd1c40e4aad52669f6e5a61fa
         <fieldset >
           <div class="form-group Usuario col-12 col-lg-6">
             <h2 class="fs-title">Crea tu Usuario</h2>
@@ -73,11 +69,6 @@
             
             <label class="col-12" for="email">Apellido</label>
             <input
-<<<<<<< HEAD
-            id="lname"
-              class="col-12"
-=======
->>>>>>> 6c67421b0e23654fd1c40e4aad52669f6e5a61fa
               type="text"
               class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
               id="lname"  name="lname"  value="<%= (typeof old != 'undefined' && old.lname)?old.lname:'' %>" placeholder="Apellido" title="El apellido debe tener más de dos caracteres"/>

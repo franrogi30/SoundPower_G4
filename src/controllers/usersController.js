@@ -22,11 +22,13 @@ module.exports = {
         nombre: req.body.fname,
         apellido: req.body.lname,
         email: req.body.email,
-        contraseña: bcrypt.hashSync(req.body.pass, 10),
+        password: bcrypt.hashSync(req.body.pass, 10),
         avatar: req.files[0] ? req.files[0].filename : "default-image.png",
         rol: req.body.rol
       }).then( user => {
+
         res.redirect("/users/login")
+        
       }).catch(error => {
         res.send(error)
       })
@@ -111,7 +113,9 @@ adminProfiles: (req,res)=>{
           id:user.id
         });
       })
-      .catch((error) => res.send(error));
+      .catch((error) => {
+        res.send(error);  
+      })
   },
 
   processProfile: (req, res) => {
