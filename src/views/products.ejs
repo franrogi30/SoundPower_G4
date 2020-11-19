@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-  <%- include("partials/head")%>
+    <%- include("partials/head")%>
 
-  <body>
+<body>
     <%- include("partials/navbar") %> 
     <%- include("partials/social") %>
     
@@ -10,34 +10,25 @@
     <section class="listadoProductos">
     <div class="row products">
         <div class="col-12">
-              <h2>
-              <%= title %>
-              </h2>
-          <div class="filas">
-                        <% products.forEach(products => { %>
-
-                                    
-                             <article>
-                               <figure>
-                                   
+            <h2>
+            <%= title %>
+            </h2>
+        <div class="filas">
+                        <% product.forEach(products => { %>
+                        <article>
+                            <figure>
                                 <a href="/products/details/<%= producto.id %> "><img src="/images/products/<%- products.imagen %>  " alt=" ">
                                     <%- products.nombre %>
-                       </a>
-                                    </figure>
-                                    
-                                     
-                                                
-                                             <h5>
-                                                 <%- producto.price %>
-                                             </h5> 
-                                            
-                                    </article>
+                                </a>
+                            </figure>
+                            <h5>
+                                    <%- producto.price %>
+                            </h5> 
+                        </article>
                                 
-
                             <% }) %> 
                         </div>
                     </div>
-                  
                 </section>
             </div>
             
@@ -46,5 +37,5 @@
 </div>
 
     <%- include("partials/footer") %>
-  </body>
+</body>
 </html>
