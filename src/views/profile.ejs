@@ -30,9 +30,9 @@
                       <% } %> 
                       <% } %> 
                       <form  class="col-12 col-md-6" action="">
-                     <img src="<%= avatar%>" alt="usuario">
+                     <img src="<%=userData.avatar%>" alt="usuario">
                     </form>
-                      <form class="col-12 col-md-6" id="profile" action="/users/profile" method="POST" enctype="multipart/form-data">
+                      <form class="col-12 col-md-6" id="profile" action="/users/profile/:<%-userData.id %>" _method=PUT  method="POST" enctype="multipart/form-data">
                      
                          
                          

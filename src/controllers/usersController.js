@@ -22,10 +22,10 @@ module.exports = {
         nombre: req.body.fname,
         apellido: req.body.lname,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.pass, 10),
+        contraseña: bcrypt.hashSync(req.body.pass, 10),
         avatar: req.files[0] ? req.files[0].filename : "default-image.png",
         rol: req.body.rol
-      }).then( user => {
+      }).then( result => {
 
         res.redirect("/users/login")
         
@@ -146,6 +146,10 @@ module.exports = {
         telefono: req.body.telefono,
         contraseña: bcrypt.hashSync(req.body.pass, 10),
         
+      },{
+        where:{
+          id:userData.id
+        }
       })
         .then((result) => {
           return res.redirect("login" + req.session.user.id,{

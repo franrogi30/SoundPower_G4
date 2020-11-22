@@ -58,7 +58,7 @@ module.exports = {
         nombre: req.body.titulo,
         descripcion: req.body.descripcion,
         descuento: req.body.discount,
-        color: req.body.color,
+        colors: req.body.color,
         precio: req.body.precio,
         marca_id: req.body.mark,
         categoria_id: req.body.class,
