@@ -33,22 +33,22 @@ module.exports = {
     let categorias = db.categories.findAll({
       order: [["id", "ASC"]],
     });
-    let marcas = db.marcas.findAll({
+    let marcas = db.Marcas.findAll({
       order: [["id", "ASC"]],
     });
-    /*let color=db.colors.findAll({
+    let colors=db.colors.findAll({
         order : [
-            ['nombre','ASC']
+            ['id','ASC']
         ]
 
-    })*/
+    })
 
-    Promise.all([categorias, marcas]).then(([categorias, marcas]) => {
+    Promise.all([categorias, marcas, colors]).then(([categorias, marcas, colors]) => {
       res.render("productAdd", {
         title: "Agregar Productos",
         categorias: categorias,
         marcas: marcas,
-        //color: color
+        colors: colors
       });
     });
   },
@@ -60,8 +60,8 @@ module.exports = {
         descuento: req.body.discount,
         color: req.body.color,
         precio: req.body.precio,
-        marcas: req.body.mark,
-        categorias: req.body.class,
+        marca_id: req.body.mark,
+        categoria_id: req.body.class,
         imagen: req.files[0] ? req.files[0].filename : "default-image.png",
       })
       .then((Result) => {

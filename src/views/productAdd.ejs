@@ -23,35 +23,29 @@
     </div>
     <div>
     <label class="col-12" for=""> Tipo de instrumento *</label> 
-      <select name="class" class="seleccion-de-instrumento col-12">
-        <option selected>seleccioná tu instrumento</option>
-        <option value="guitarras-bajos">Guitarras/Bajos</option>
-        <option value="teclados-pianos">Teclados/Pianos</option>
-        <option value="amplificadores-microfonos">Amplificadores/microfonos</option>
-        <option value="accesorios">Accesorios</option>
-      </select> 
+    <select class="form-control" name="genre" id="">
+      <option value="">Elige la Clase del Intrumento</option>
+      <% categorias.forEach(categoria => { %>
+          <option value="<%= categoria.id %>"><%= categoria.nombre %> </option>
+      <% }) %>
+  </select>
     </div>
       <div>
       <label  class="col-12" for=""> Marca *</label> 
-        <select name="mark" class="seleccion-de-instrumento col-12">
-          <option selected>seleccioná Marca</option>
-       <option value="fender">Fender</option>
-       <option value="gibson">Gibson</option>
-       <option value="casio">Casio</option>
-       <option value="yamaha">Yamaha</option>
-       <option value="technics">Technics</option>
-       <option value="marshall">Marshall</option>
-        </select> 
+      <select class="form-control" name="genre" id="">
+        <option value="">Elige la Marca</option>
+        <% marcas.forEach(marca => { %>
+            <option value="<%= marca.id %>"><%= marca.nombre %> </option>
+        <% }) %>
+    </select>
         <div>
           <label class="col-12" for=""> Color *</label> 
         <select name="color" class="seleccion-de-instrumento col-12">
-          <option selected>seleccioná Color</option>
-       <option value="red"><p style="color: red;"> rojo</p></option>
-       <option value="blue"><p style="color: blue;"> azul</p></option>
-       <option value="black"><p style="color: black;"> negro</p></option>
-       <option value="gold"><p style="color: gold;"> dorado</p></option>
-       <option value="brown"><p style="color: brown;"> marron</p></option>
-       <option value="gray"><p style="color: gray;"> gris</p></option>
+          <select class="form-control" name="genre" id="">
+            <option value="">Elige el color</option>
+            <% colors.forEach(color => { %>
+                <option value="<%= color.id %>"><%= color.nombre %> </option>
+            <% }) %>
         </select>
       </div>
     <div class="descripcion col-12">

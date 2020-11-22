@@ -71,7 +71,11 @@ module.exports = {
           });
         }).catch((error) => res.send(error));
     } else {
-      res.render("login", { errors: errors.errors });
+      res.render("login", {   
+        title : "Ingresá a tu cuenta",
+      
+      errors : errors.mapped(),
+      old : req.body});
     }
   },
 
