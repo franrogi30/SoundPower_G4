@@ -7,17 +7,16 @@
    <%- include("partials/social") %>
 
     <div class="container">
-      <div class="row">
-        <div class="col-12">
+     
           <section class="perfilUsuario">
-            <div class="row perfil">
+  
 
                 <div class="titulo col-12">
                     <h2 style="text-align: center;">
                       <%=userSession.nick.toUpperCase()%>
                     </h2>
                 </div>
-                   <div class="contenido col-12">
+                  <div class="contenido ">
                     <div class="row">
       
                       <% if (typeof errors != 'undefined') { %>
@@ -30,13 +29,18 @@
                      </ul><br>
                       <% } %> 
                       <% } %> 
-               
-                      <form id="profile" action="/users/profile" method="POST" enctype="multipart/form-data">
-                       <fieldset >
+                      <form  class="col-12 col-md-6" action="">
+                     <img src="<%= avatar%>" alt="usuario">
+                    </form>
+                      <form class="col-12 col-md-6" id="profile" action="/users/profile" method="POST" enctype="multipart/form-data">
+                     
+                         
+                         
+                        <fieldset >
                                   
-                                  <div class="Datos col-12 col-lg-8">
+                                  <div class="Datos ">
                                     <h2 class="fs-title">Datos Personales</h2>
-                                    <label class="col-12" for="nombre">Nombre</label>
+                                    <label  for="nombre">Nombre</label>
                                     <input
                                       type="text"
                                       class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
@@ -44,78 +48,65 @@
                                                 title="El nombre debe tener más de dos caracteres"/>
                                                 <small id="errorFname" class="text-danger"><%= (typeof errors != 'undefined' && errors.fname)?errors.fname.msg: "" %> </small>
                                     
-                                    <label class="col-12" for="email">Apellido</label>
+                                    <label  for="email">Apellido</label>
                                     <input
                                       type="text"
                                       class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
                                       id="lname"  name="apellido" placeholder="<%= userData.apellido%>"  value="<%= (typeof old != 'undefined' && old.apellido)?old.apellido: userData.apellido %>"  title="El apellido debe tener más de dos caracteres"/>
                                       <small id="errorLname" class="text-danger"><%= (typeof errors != 'undefined' && errors.apellido)?errors.lname.msg: "" %> </small>
                                     
-                                    <label class="col-12" for="phone">Telefono</label>
+                                    <label  for="phone">Telefono</label>
                                     <input
                                       class="col-12"
                                       type="text"
                                       name="telefono"
                                       placeholder="<%= userData.telefono %>"
                                     />
-                                    <label class="col-12 col-lg-8" for="direccion">Domicilio</label>
+                                    <label class="" for="direccion">Domicilio</label>
                                     <input class="col-12" name="direccion" placeholder="<%= userData.direccion %>" />
                                   </div>
-                                </fieldset>
-                                <fieldset >
-                                  <div class="Usuario col-12 col-lg-8">
+                        </fieldset>
+                        <fieldset >
+                                  <div class="Usuario">
                                     <h2 class="fs-title">Crea tu Usuario</h2>
-                                    <div class="form-row">
-                                      <div class="form-group col-12 ">
+                                   
+                                      <div class="form-group">
                                     <label class="col-12" for="email">Email</label>
                                     <input
                                       type="text"
-                                       class="form-control col-12" <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":(typeof errors != 'undefined' && errors.email)?"is-invalid": ""  %>"
+                                       class="form-control" <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":(typeof errors != 'undefined' && errors.email)?"is-invalid": ""  %>"
                                                 id="email" value="<%= (typeof old != 'undefined' && old.email)?old.email: userData.email %>"  
                                                 name="email" placeholder="<%= userData.email%>"/>
                                                 <small id="errorEmail" class="text-danger"><%= (typeof errors != 'undefined' && errors.email)?errors.email.msg: "" %> </small>
-                                    <label class="col-12" for="password">Contraseña</label>
+                                    <label  for="password">Contraseña</label>
                                     <input
                                       type="password"
-                                      class="form-control col-12" <%= (typeof errors != 'undefined' && errors.contraseña)?"is-invalid": ""  %>"
+                                      class="form-control" <%= (typeof errors != 'undefined' && errors.contraseña)?"is-invalid": ""  %>"
                                                 id="pass" placeholder="contraseña" name="pass"/>
                                                 <small id="errorPass" class="text-danger"><%= (typeof errors != 'undefined' && errors.pass)?errors.pass.msg: "" %> </small>
                                               </div>
                                     
-                                    <label class="col-12" for="password">Repita Contraseña</label>
+                                    <label  for="password">Repita Contraseña</label>
                                     <input
                                       type="password"
-                                      class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
+                                      class="form-control" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
                                                 id="cpass" placeholder="contraseña" name="cpass"/>
                                                 <small id="errorCpass" class="text-danger"><%= (typeof errors != 'undefined' && errors.cpass)?errors.cpass.msg: "" %> </small>
                                     </div>
-                                   </fieldset>
-                               
-                               
-                                    <div class="btEnviar col-4">
+                                    <div class="btEnviar col-3" style="background-color: #e4e4e4; text-decoration: #045757; border-radius: 5px;">
                                       <button class="btn btn-submit" type="submit" style="text-align: center;">Actualizar</button>
                                     </div>
-                                  
-                                
-                               </form>
-                            </div>
-
-
-                             
-                              
-                            </div>
-                        </div>
-                
-                </div>
-            </div>
-        </section>
+                        </fieldset>
+                          
+                      </form>
+                    </div>
+                  </div>
+          </section>
     </div>
 
 
 
-        </div>
-      </div>
-    </div>
+    
     <%- include("partials/footer") %>
   </body>
 </html>

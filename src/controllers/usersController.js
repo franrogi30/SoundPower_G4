@@ -64,7 +64,6 @@ module.exports = {
           res.render("index", {
             
             userSession: req.session.user,
-            //user: user,
             avatar:user.avatar
 
           });
@@ -85,8 +84,8 @@ profiles:(req,res)=>{
 db.users.findAll()
 .then ((users) =>{
   res.render("users", {
-    user:db.users,
-    title:"usuarios".toUpperCase()
+    title:"usuarios".toUpperCase(),
+    users:users,
   }
 
 )
@@ -102,12 +101,13 @@ adminProfiles: (req,res)=>{
   profile: (req, res) => {
     db.users.findByPk(req.session.user.id)
       .then((user) => {
-   console.log(user); 
+
         res.render("profile", {
           userData: user,
           userSession: req.session.user,
           rol: req.body.rol,
-          id:user.id
+          id:user.id,
+          avatar:user.avatar,
         });
       })
       .catch((error) => res.send(error));
@@ -138,4 +138,15 @@ adminProfiles: (req,res)=>{
       res.render("profile", { errors: errors.errors });
     }
   },
+  delete : (req,res)=>{
+    db.users.destroy ({
+        where: {
+            id: req.params.id
+        }
+        .then(result =>{
+
+        })
+    })
+
+}
 };

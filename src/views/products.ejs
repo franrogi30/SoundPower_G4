@@ -14,19 +14,21 @@
             <%= title %>
             </h2>
         <div class="filas">
-                        <% product.forEach(products => { %>
-                        <article>
+                        <% for (let i = 0; i < products.length;i++) { %>
+                       <ul>
+                         <li>   <article>
                             <figure>
-                                <a href="/products/details/<%= producto.id %> "><img src="/images/products/<%- products.imagen %>  " alt=" ">
-                                    <%- products.nombre %>
+                                <ul><
+                                <a href="/products/details/<%= product.id %> "><img src="/images/products/<%- product.imagen %>  " alt=" ">
+                                    <%- product.nombre %>
                                 </a>
                             </figure>
                             <h5>
-                                    <%- producto.price %>
+                                    <%- product.price %>
                             </h5> 
-                        </article>
-                                
-                            <% }) %> 
+                        </li> </article>
+                    </ul>     
+                            <% } %> 
                         </div>
                     </div>
                 </section>

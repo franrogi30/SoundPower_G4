@@ -26,6 +26,8 @@ router.post('/profile/:id',upAvatar.any(),profileValidator,controller.processPro
 router.post('/logout', controller.logout)
 router.get('/logout', controller.logout)
 //admin users
-router.get('/admin', controller.profiles)
-
+router.get('/admin/', controller.profiles)
+router.post('/admin/:id', controller.adminProfiles)
+// delete user
+router.post('/delete/:id')
 module.exports = router;

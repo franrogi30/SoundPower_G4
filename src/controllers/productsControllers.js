@@ -9,13 +9,13 @@ const { Result } = require('express-validator');
 module.exports = {
     products : (req, res) => {
         db.products.findAll()
-        .then((product) => {
+        .then((products) => {
             res.render('products', {
                 title: "Productos",
-                product: product 
+                products: products 
             }
         )
-    }).catch(console.log(error))
+    })
 
     },
     productsDetails : (req, res) => {
@@ -30,24 +30,32 @@ module.exports = {
 
     },
     productsAdd : (req, res) => {
-        let categorias = db.Category.findAll({
+        let categorias = db.categories.findAll({
             order : [
                 ['nombre','ASC']
             ]
         }
     )
-        let marcas = db.Marcas.findAll({
+        let marcas = db.marcas.findAll({
             order : [
                 ['nombre','ASC']
             ]
         }
     )
+    /*let color=db.colors.findAll({
+        order : [
+            ['nombre','ASC']
+        ]
+
+    })*/
+
     Promise.all([categorias,marcas])
     .then(([categorias,marcas]) => {
         res.render('productAdd',{
             title:"Agregar Productos",
             categorias: categorias,
-            marcas: marcas
+            marcas: marcas,
+            //color: color
         })
     })
     },
@@ -57,8 +65,12 @@ module.exports = {
             
         nombre: req.body.titulo,
         descripcion: req.body.descripcion,
+        descuento:req.body.discount,
+        color:req.body.color,
         precio: req.body.precio,
-        imagen:req.file[0].filename
+        marca_id: req.body.mark,
+        categoria_id:req.body.class,
+        imagen:req.files[0] ? req.files[0].filename : "default-image.png",
         })
         .then(Result =>{
             return res.redirect('/products/productsAdd')
@@ -74,9 +86,10 @@ module.exports = {
     },
     modify: (req,res)=>{
         let id = req.params.id;
-        let producto = dbProducts.filter(producto => {
-            return producto.id == id
-        })
+        db.products.findAll({
+            where:{
+                id:id
+            } .then (Categoria => {
         res.render('modifyProduct', {
             title: "Modificar Productos",
             id: id,
@@ -87,26 +100,36 @@ module.exports = {
             category:producto.category
 
         })
-      },
+    })
+ })
+} ,
     discount: (req,res) =>{
 
-        res.render('products',{
-        title:"OPORTUNIDADES",
-        producto:dbProducts,   
-        }
+        db.products.findAll()
+        .then((products) => {
+            res.render('products', {
+                title: "Oportunidades",
+                products: products 
+            }
         )
+    })
       },
     category : (req,res)=>{
             let category = req.params.category;
-            let producto = dbProducts.filter(producto => {
-                return producto.category == category
-            })
+            db.products.findAll({
+                where:{
+                    Categoria:category
+                } 
+          
+        }).then (Categoria => {
+                
             res.render('products', {
                 
                 title: "Categoria "+ category.toUpperCase(),
                 producto:producto,
                 price:producto.price,
                 image:producto.image
+        })
         })
     },
     search: function(req, res) {
@@ -122,7 +145,7 @@ module.exports = {
                 }
             })
         res.render('products', {
-            title: "Resultado de la búsqueda",
+            title: "Resultado para " + buscar,
             producto: productos,
      
         })
