@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include("partials/head.ejs")%>
+<%- include("partials/head")%>
 <body>
-  <%- include("partials/navbar.ejs")%>
+  <%- include("partials/navbar")%>
   <%- include("partials/social") %>
   
     <div style="border-radius: 3px; margin-top: 8vh; margin-bottom: 5vh;" class="publica container">
@@ -64,7 +64,7 @@
             $  <input type="text"  name="precio" id="precio" placeholder="25.000"><br>
         </div>
         <div class="descuento">
-          <h5>Descuento ? (0-100%)</h5>        
+          <h5>Descuento (0-100%)</h5>        
           <input type="number" id="discount" name="discount"
           min="0" max="100"> %
         </div>

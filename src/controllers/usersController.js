@@ -80,24 +80,37 @@ module.exports = {
   },
 
   //base de datos de perfiles
-profiles:(req,res)=>{
-db.users.findAll()
-.then ((users) =>{
+  profiles:(req,res)=>{
+  db.users.findAll()
+  .then ((users) =>{
   res.render("users", {
     title:"usuarios".toUpperCase(),
     users:users,
   }
 
-)
-})
-},
+  ) 
+  })
+  },
 
-adminProfiles: (req,res)=>{
+  adminProfiles: (req,res)=>{
+    db.users.update({
+        
+      nombre: req.body.nombre,
+      apellido: req.body.apellido,
+      email: req.body.email,
+      rol: req.body.rol
+      
+    })
+      .then((result) => {
+        return res.redirect("users",{
+          title:"usuarios".toUpperCase(),
+          users:users,
+        });
+      })
+  },
 
-},
 
-
-//perfil de usuario
+ //perfil de usuario
   profile: (req, res) => {
     db.users.findByPk(req.session.user.id)
       .then((user) => {
@@ -127,7 +140,7 @@ adminProfiles: (req,res)=>{
         
       })
         .then((result) => {
-          return res.redirect("/users/profile/" + req.session.user.id,{
+          return res.redirect("login" + req.session.user.id,{
             userSession: req.session.user,
           });
         })
@@ -143,10 +156,16 @@ adminProfiles: (req,res)=>{
         where: {
             id: req.params.id
         }
-        .then(result =>{
-
+      })
+      .then ((result) => {
+          return res.redirect("users", {
+            title:"usuarios".toUpperCase(),
+            users:users,
+            
         })
-    })
-
+      })
+    
+  
+  }, 
+  
 }
-};

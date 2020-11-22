@@ -20,10 +20,9 @@ module.exports = (sequelize, dataTypes) => {
     }
     let Category = sequelize.define(alias,cols,config);
     Category.associate = function(models){
-        Category.belongsTo(models.products,{
-            as : 'products', // Products.marcas
-            foreignKey : 'id',//la clave foranea de este modelo en esa tabla intermedia
-            
+        Category.hasMany(models.products,{
+            as : 'products', 
+            foreignKey : 'categoria_id',            
         })
 
     }

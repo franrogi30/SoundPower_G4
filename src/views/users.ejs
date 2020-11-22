@@ -19,24 +19,24 @@
             <% for (let i = 0; i < users.length;i++) { %>
                 <ul style="text-decoration:none ; list-style-type: none;">
                   <li style="text-decoration:none ;">  
-                    <form class="row" action="/admin/'<%= user.id %>'_method=PUT" method="POST">               
+                    <form class="row" action="/users/admin/:<%= users[i].id %>"_method=PUT method="POST">               
                         <div style="vertical-align: middle; object-fit: cover;
-                        object-position: top; margin-bottom: 10px ;        border-radius: 3px; background-color: #e4e4e4; background-image: url("<%= user.imagen %>");  class="col-12 col-md-2 avatar">
+                        object-position: top; margin-bottom: 10px ;border-radius: 3px; background-color: #e4e4e4; background-image: url('<%= users[i].imagen %>')"  class="col-12 col-md-2 avatar">
                         </div>
                         <div class="col-12 col-md-10">
-                        <input class="form-control" type="text" value="<%=user.nombre%>" name="nombre" placeholder="<%= user.name%>">
-                        <input class="form-control" type="text" value="<%=user.apellido%>" name="apellido" placeholder=" <%= user.apellido %>">
-                        <input class="form-control" type="email" value="<%=user.email%>" name="email" placeholder="<%=  user.email %>">
-                        <select id="" class="custom-select custom-select-lg mb-3"  name="rol" placeholder="<%=user.rol%>"required>
-                            <option value=""><%=user.rol%></option>
+                        <input class="form-control" type="text" value="<%=users[i].nombre%>" name="nombre" placeholder="<%= users[i].name%>">
+                        <input class="form-control" type="text" value="<%=users[i].apellido%>" name="apellido" placeholder=" <%= users[i].apellido %>">
+                        <input class="form-control" type="email" value="<%=users[i].email%>" name="email" placeholder="<%=  users[i].email %>">
+                        <select id="" class="custom-select custom-select-lg mb-3"  name="rol" placeholder="<%=users[i].rol%>"required>
+                            <option value="rol"><%=users[i].rol%></option>
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>             
-                        <button class="btn btn-submit" action="users/admin/:('<%- user.id %>')" style="background: #045757; color: #e4e4e4;" type="reset">Cancelar</button>
+                        <button class="btn btn-submit" action="/users/admin/:('<%- users[i].id %>')" style='background: #045757; color: #e4e4e4;' type="reset">Cancelar</button>
                         <button class=" btn btn-submit" style="background: #e4e4e4;color: #045757" type="submit" name="id" value="">Editar</button>
                     </div>
                     </form>    
-                        <form action="/users/delete/<%= user.id %>?_method=DELETE" method="POST">
+                        <form action="/users/delete/<%= users[i].id %>"_method=DELETE method="POST">
                             <button class="btn btn-danger" type="submit" name="id" value="">Borrar usuario <i class="fas fa-trash"></i></button>
                         </form>
                 </div>     
