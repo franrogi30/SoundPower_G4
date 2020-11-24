@@ -52,7 +52,7 @@ module.exports = [
 
     check('bases')
     .isString("on")
-    .withMessage("Debe aceptar las bases y condiciones"),
+    .withMessage("las bases y condiciones"),
 
     body('avatar')
     .custom((value,{req})=>{

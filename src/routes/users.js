@@ -15,7 +15,7 @@ router.post('/register',upAvatar.any(),registerValidator,controller.processRegis
 
 // login page
 router.get('/login', controller.Login)
-router.post('/login',controller.processLogin)
+router.post('/login',loginValidator,controller.processLogin)
 
 //profile page
 router.get('/profile/:id',controller.profile)

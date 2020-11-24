@@ -21,6 +21,8 @@ module.exports = {
       db.users.create({
         nombre: req.body.fname,
         apellido: req.body.lname,
+        telefono: req.body.phone,
+        direccion: req.body.address,
         email: req.body.email,
         contraseña: bcrypt.hashSync(req.body.pass, 10),
         avatar: req.files[0] ? req.files[0].filename : "default-image.png",
@@ -170,7 +172,7 @@ module.exports = {
         }
       })
       .then ((result) => {
-          return res.redirect("users", {
+          return res.render("users", {
             title:"usuarios".toUpperCase(),
             users:users,
             

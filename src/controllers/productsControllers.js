@@ -36,19 +36,17 @@ module.exports = {
     let marcas = db.Marcas.findAll({
       order: [["id", "ASC"]],
     });
-    let colors=db.colors.findAll({
-        order : [
-            ['id','ASC']
-        ]
 
-    })
+        
 
-    Promise.all([categorias, marcas, colors]).then(([categorias, marcas, colors]) => {
+    
+
+    Promise.all([categorias, marcas]).then(([categorias, marcas]) => {
       res.render("productAdd", {
         title: "Agregar Productos",
         categorias: categorias,
         marcas: marcas,
-        colors: colors
+   
       });
     });
   },
@@ -58,7 +56,7 @@ module.exports = {
         nombre: req.body.titulo,
         descripcion: req.body.descripcion,
         descuento: req.body.discount,
-        colors: req.body.color,
+   
         precio: req.body.precio,
         marca_id: req.body.mark,
         categoria_id: req.body.class,
@@ -108,10 +106,10 @@ module.exports = {
     db.products
       .findAll({
         where: {
-          Categoria: category,
+          categoria_id: category,
         },
       })
-      .then((Categoria) => {
+      .then((Categoria_id) => {
         res.render("products", {
           title: "Categoria " + category.toUpperCase(),
           producto: producto,
@@ -126,7 +124,7 @@ module.exports = {
     if (errors.isEmpty()) {
       let buscar = req.query.search;
       let productos = [];
-      dbProducts.forEach((producto) => {
+      db.products.forEach((producto) => {
         if (producto.name.toLowerCase().includes(buscar)) {
           productos.push(producto);
         }

@@ -23,20 +23,26 @@
           <p>Para acceder inicie sesión</p>
         </div>
         <div class="main">
-             <form action="/users/login" method="POST">
+             <form id="login" action="/users/login" method="POST">
               <div class="form-group col-12 col-md-6">
                 <label>Usuario</label>
-                <input type="email" class="form-control"  name="email" placeholder="Usuario">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Usuario">
+                <span style="color: red;" class="col-12" id="errorEmail"></span>
               </div>
+             
               <div class="form-group col-12 col-md-6">
                 <label>contraseña</label>
-                <input type="password"  class="form-control" name="pass" placeholder="contraseña">
+                <input type="password"  class="form-control" id="pass" name="pass" placeholder="contraseña">
+                <span style="color: red;" class="col-12" id="errorPass"></span>
               </div>
+              
               <button type="submit" class="btn btn-secondary col-1">Login</button>
             </form>
          </div>
+         <span  style="color: red;" class="col-12"id="msgError"></span>
     </div>
   <%- include("partials/footer") %>
+  <script src="/javascript/login.js"></script>
 </body>
 
 </html>
