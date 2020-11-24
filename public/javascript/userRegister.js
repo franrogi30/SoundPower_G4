@@ -22,7 +22,7 @@ window.addEventListener('load',function(){
     let regExEmail =  /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]:+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/;
 
     let regExPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$/;
-    console.log(inputEmail)
+    
     inputFname.addEventListener('blur',function(){
         switch (true) {
             case this.value == 0:
@@ -60,7 +60,7 @@ window.addEventListener('load',function(){
     })
 
     inputEmail.addEventListener('blur',function(){
-        console.log("qwdwqdqwdqwwqd")
+        
         switch (true) {
             case this.value == 0:
                 errorEmail.innerHTML = "El campo email es obligatorio"
@@ -95,7 +95,7 @@ window.addEventListener('load',function(){
     inputPass.addEventListener('blur',function(){
         switch (true) {
             case this.value == 0:
-                errorPass.innerHTML = "El campo contraseña es obligatorio"
+                errorPass.innerHTML = "El scampo contraseña es obligatorio"
                 this.classList.add('is-invalid')
                 break;
             case !regExPass.test(this.value):
@@ -141,6 +141,7 @@ window.addEventListener('load',function(){
 
     formRegister.addEventListener('submit',function(event){
         event.preventDefault();
+        console.log(elementos)
         if(checkBases.checked == false){
             checkBases.classList.add('is-invalid');
             errorBases.innerHTML = "Debes aceptar las bases y condiciones"

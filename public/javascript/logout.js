@@ -6,6 +6,7 @@ const qs = function (element){
 window.addEventListener('load',function(){
 
     let salida = qs('#salida');
-salida.onsubmit = ()=>{
-    alert("Gracias por visitar nuestra pagina, lo esperamos pronto")
-}
+    salida.onsubmit = ()=>{
+        alert("Gracias por visitar nuestra pagina, lo esperamos pronto")
+    }
+})
