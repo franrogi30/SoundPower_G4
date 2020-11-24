@@ -126,42 +126,41 @@ module.exports = {
         res.render("profile", {
           userData: user,
           userSession: req.session.user,
-          rol: req.body.rol,
-          id:user.id,
-          avatar:user.avatar,
+       
         });
       })
       .catch((error) => {
         res.send(error);  
-      })
+      });
   },
-
   processProfile: (req, res) => {
     let errors = validationResult(req);
     if (errors.isEmpty()) {
       db.users.update({
         
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
+        nombre: req.body.lname,
+        apellido: req.body.lname,
         email: req.body.email,
-        direccion: req.body.direccion,
-        telefono: req.body.telefono,
+        direccion: req.body.address,
+        telefono: req.body.phone,
         contraseña: bcrypt.hashSync(req.body.pass, 10),
         
       },{
         where:{
-          id:userData.id
-        }
+            
+        id:req.params.id
+      }
       })
         .then((result) => {
-          return res.redirect("login" + req.session.user.id,{
-            userSession: req.session.user,
-          });
+          return res.redirect("/" )
+         
         })
+      
         .catch((err) => {
           console.log(err);
-        });
-    } else {
+        })
+        
+      } else {
       res.render("profile", { errors: errors.errors });
     }
   },

@@ -151,7 +151,7 @@ window.addEventListener("load", function () {
     for (let index = 0; index < elementos.length - 1; index++) {
       if (
         elementos[index].value == 0 &&
-        index != 4 &&
+        
         index != 8 &&
         index != 9
       ) {

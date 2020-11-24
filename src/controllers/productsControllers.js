@@ -95,7 +95,10 @@ module.exports = {
     });
   },
   discount: (req, res) => {
-    db.products.findAll().then((products) => {
+    db.products.findAll({
+      where: db.products.discount > 10 
+    })
+    .then((products) => {
       res.render("products", {
         title: "Oportunidades",
         products: products,
