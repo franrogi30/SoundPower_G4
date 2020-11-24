@@ -15,16 +15,16 @@
             </h2>
         <div class="filas">
                         <% for (let i = 0; i < products.length;i++) { %>
-                       <ul>
+                       <ul style="list-style: none;">
                          <li>   <article>
                             <figure>
-                                <ul><
-                                <a href="/products/details/<%= product.id %> "><img src="/images/products/<%- product.imagen %>  " alt=" ">
-                                    <%- product.nombre %>
+                                <ul>
+                                <a href="/products/details/<%= products[i].id %> "><img src="/images/products/<%- products[i].imagen %>  " alt=" ">
+                                    <%- products[i].nombre %>
                                 </a>
                             </figure>
                             <h5>
-                                    <%- product.price %>
+                                    <%- products[i].price %>
                             </h5> 
                         </li> </article>
                     </ul>     

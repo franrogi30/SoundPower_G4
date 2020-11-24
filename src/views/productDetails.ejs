@@ -10,7 +10,7 @@
         <div class="row">
           <div class="titulo col-12">
             <h3 class="tit-prin">
-              <%= producto.name %>
+              <%= product.nombre %>
             </h3>
           </div>
         </div>
@@ -19,7 +19,7 @@
             <figure class="imagen">
               <img
                 class=" col-12"
-                src= <%= producto.image %>
+                src= <%= product.image %>
                 alt="imagen"
               />
             </figure>
@@ -30,7 +30,7 @@
             <div class="descripcion">
               <h3>DESCRIPCION</h3>
               <p>
-                <%= producto.description %>
+                <%= product.description %>
               </p>
             </div>
             <div class="opciones col-12">
@@ -44,7 +44,7 @@
                 <button>Color1</button>
                 <button>Color2</button>
               </div>
-              <h5 class="precio col-12"><%= producto.price %> </h5>
+              <h5 class="precio col-12"><%= product.price %> </h5>
               <div class="botones bBuy&fav">
               
                 <% if (typeof user != "undefined" && user) { %>

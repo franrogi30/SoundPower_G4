@@ -22,7 +22,7 @@ router.get('/:id/modify',Controller.modify)
 router.get('/categories/:category/',Controller.category)
 
 //Delete products
-//router.post('/delete', Controller.delete)
+router.post('/delete', Controller.delete)
 
 router.get('/discount',Controller.discount)
 router.get('/search',Controller.search)

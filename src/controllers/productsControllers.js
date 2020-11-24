@@ -22,7 +22,8 @@ module.exports = {
       });
   },
   productsDetails: (req, res) => {
-    db.products.findByPk(req.params.id).then((product) => {
+    db.products.findByPk(req.params.id)
+    .then((product) => {
       res.render("productDetails", {
         title: "Detalle del Producto",
         product: product,
