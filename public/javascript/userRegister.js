@@ -169,7 +169,8 @@ window.addEventListener("load", function () {
   );
 
 });
-admin.onload("click"), function(){
+admin.addEventListener("click"), function(){
     if(admin.checked== true){ 
     document.getElementById("key").style.display="block"
-    } 
+    }
+  }

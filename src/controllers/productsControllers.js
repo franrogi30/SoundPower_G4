@@ -124,25 +124,34 @@ module.exports = {
 
     if (errors.isEmpty()) {
       let buscar = req.query.search;
-      let productos = [];
-      db.products.forEach((producto) => {
-        if (producto.name.toLowerCase().includes(buscar)) {
-          productos.push(producto);
-        }
-      });
+     
+      db.products.findAll({
+        where: db.products.nombre == buscar
+       
+        
+      }).then ((products)=>{
+     
       res.render("products", {
         title: "Resultado para " + buscar,
-        producto: productos,
-      });
+        products: products,
+      })})
     } else {
       return res.redirect("/");
     }
   },
   delete: (req, res) => {
     db.products.destroy({
-      where: {
-        id: req.params.id,
-      }.then((result) => {}),
-    });
-  },
+      
+        where: {
+            id: req.body.id
+        }
+      })
+      .then ((result) => {
+          return res.render("products", {
+            title:"productos".toUpperCase(),
+            products:products
+          })
+        })
+        }
+      
 };
