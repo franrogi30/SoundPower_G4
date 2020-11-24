@@ -9,6 +9,7 @@ window.addEventListener("load", function () {
 
   let elementos = formRegister.elements;
   let admin = qs("#admin");
+  let user = qs("#user");
   let key = qs("#key;")
   let inputFname = qs("#fname");
   let inputLname = qs("#lname");
@@ -169,8 +170,9 @@ window.addEventListener("load", function () {
   );
 
 });
-admin.addEventListener("click"), function(){
-    if(admin.checked== true){ 
+admin.addEventListener("click", function(){
+    if(admin.checked== true ){ 
     document.getElementById("key").style.display="block"
-    }
-  }
+    }else{document.getElementById("key").style.display="none"}
+  })
+  

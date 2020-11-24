@@ -174,7 +174,7 @@ module.exports = {
       .then ((result) => {
           return res.render("users", {
             title:"usuarios".toUpperCase(),
-            users:users,
+            user:user,
             
         })
       })

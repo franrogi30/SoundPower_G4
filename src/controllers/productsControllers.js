@@ -106,16 +106,15 @@ module.exports = {
     let category = req.params.category;
     db.products
       .findAll({
-        where: {
-          categoria_id: category,
-        },
+        where: 
+          db.products.categoria_id == category,
+        
       })
-      .then((Categoria_id) => {
+      .then((products) => {
         res.render("products", {
           title: "Categoria " + category.toUpperCase(),
-          producto: producto,
-          price: producto.price,
-          image: producto.image,
+          products: products,
+         
         });
       });
   },
