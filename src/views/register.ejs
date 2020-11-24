@@ -36,7 +36,7 @@
             <label class="col-12" for="password">Contraseña</label>
             <input
               type="password"
-              class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
+              class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>
                         id="pass" placeholder="contraseña" name="pass"/>
                         <small id="errorPass" class="text-danger"><%= (typeof errors != 'undefined' && errors.pass)?errors.pass.msg: "" %> </small>
                       </div>

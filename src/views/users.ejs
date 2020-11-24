@@ -16,25 +16,38 @@
           <div class="filas">
                         
 
-                                    
-                             <article>
-                               <figure class="row">
-                                   
-                                <a class="col-12"  href="" ;"><img style="border-radius: 50%; height: 8vh; width: 8 vh; object-fit: cover; z-index: 1; margin-right: 20px;" src="/images/users/avatar-1605220729473.png" alt=" ">
-                                    USUARIO .....
-                       </a>
-                                    </figure>
-                                    <figure style="text-align: right;">
-                                     <a style="text-align: right; background: none" class="col-2" href=""><i style="color: red; " class="fas fa-trash"></i></a>
-                                     <a style="text-align: right; background: none" class="col-2" href=""><i style="color: #045757 ;" class="far fa-edit"></i></a>       
-                                    </figure>
-                                    </article>
-                                
-
-                         
+            <% for (let i = 0; i < users.length;i++) { %>
+                <ul style="text-decoration:none ; list-style-type: none;">
+                  <li style="text-decoration:none ;">  
+                    <form class="row" action="/users/admin/:<%= users[i].id %>"_method=PUT method="POST">               
+                        <div style="vertical-align: middle; object-fit: cover;
+                        object-position: top; margin-bottom: 10px ;border-radius: 3px; background-color: #e4e4e4; background-image: url('<%= users[i].imagen %>')"  class="col-12 col-md-2 avatar">
                         </div>
+                        <div class="col-12 col-md-10">
+                        <input class="form-control" type="text" value="<%=users[i].nombre%>" name="nombre" placeholder="<%= users[i].name%>">
+                        <input class="form-control" type="text" value="<%=users[i].apellido%>" name="apellido" placeholder=" <%= users[i].apellido %>">
+                        <input class="form-control" type="email" value="<%=users[i].email%>" name="email" placeholder="<%=  users[i].email %>">
+                        <select id="" class="custom-select custom-select-lg mb-3"  name="rol" placeholder="<%=users[i].rol%>"required>
+                            <option value="rol"><%=users[i].rol%></option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>             
+                        <button class="btn btn-submit" action="/users/admin/:('<%- users[i].id %>')" style='background: #045757; color: #e4e4e4;' type="reset">Cancelar</button>
+                        <button class=" btn btn-submit" style="background: #e4e4e4;color: #045757" type="submit" name="id" value="">Editar</button>
                     </div>
-                  
+                    </form>    
+                        <form action="/users/delete/<%= users[i].id %>"_method=DELETE method="POST">
+                            <button class="btn btn-danger" type="submit" name="id" value="">Borrar usuario <i class="fas fa-trash"></i></button>
+                        </form>
+                </div>     
+                
+                
+                    </li>
+                </ul>  
+    
+                <% } %>    
+                    </div>
+            
                 </section>
             </div>
             

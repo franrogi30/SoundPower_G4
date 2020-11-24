@@ -22,10 +22,10 @@ module.exports = {
         nombre: req.body.fname,
         apellido: req.body.lname,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.pass, 10),
+        contraseña: bcrypt.hashSync(req.body.pass, 10),
         avatar: req.files[0] ? req.files[0].filename : "default-image.png",
         rol: req.body.rol
-      }).then( user => {
+      }).then( result => {
 
         res.redirect("/users/login")
         
@@ -66,13 +66,16 @@ module.exports = {
           res.render("index", {
             
             userSession: req.session.user,
-            //user: user,
             avatar:user.avatar
 
           });
         }).catch((error) => res.send(error));
     } else {
-      res.render("login", { errors: errors.errors });
+      res.render("login", {   
+        title : "Ingresá a tu cuenta",
+      
+      errors : errors.mapped(),
+      old : req.body});
     }
   },
 
@@ -83,34 +86,47 @@ module.exports = {
   },
 
   //base de datos de perfiles
-profiles:(req,res)=>{
-db.users.findAll()
-.then ((users) =>{
+  profiles:(req,res)=>{
+  db.users.findAll()
+  .then ((users) =>{
   res.render("users", {
-    user:db.users,
-    title:"usuarios".toUpperCase()
+    title:"usuarios".toUpperCase(),
+    users:users,
   }
 
-    )
+  ) 
   })
-},
+  },
 
-adminProfiles: (req,res)=>{
+  adminProfiles: (req,res)=>{
+    db.users.update({
+        
+      nombre: req.body.nombre,
+      apellido: req.body.apellido,
+      email: req.body.email,
+      rol: req.body.rol
+      
+    })
+      .then((result) => {
+        return res.redirect("users",{
+          title:"usuarios".toUpperCase(),
+          users:users,
+        });
+      })
+  },
 
-},
 
-
-//perfil de usuario
+ //perfil de usuario
   profile: (req, res) => {
     
     db.users.findByPk(req.session.user.id)
       .then((user) => {
-          
         res.render("profile", {
           userData: user,
           userSession: req.session.user,
           rol: req.body.rol,
-          id:user.id
+          id:user.id,
+          avatar:user.avatar,
         });
       })
       .catch((error) => {
@@ -130,9 +146,13 @@ adminProfiles: (req,res)=>{
         telefono: req.body.telefono,
         contraseña: bcrypt.hashSync(req.body.pass, 10),
         
+      },{
+        where:{
+          id:userData.id
+        }
       })
         .then((result) => {
-          return res.redirect("/users/profile/" + req.session.user.id,{
+          return res.redirect("login" + req.session.user.id,{
             userSession: req.session.user,
           });
         })
@@ -143,4 +163,21 @@ adminProfiles: (req,res)=>{
       res.render("profile", { errors: errors.errors });
     }
   },
-};
+  delete : (req,res)=>{
+    db.users.destroy ({
+        where: {
+            id: req.params.id
+        }
+      })
+      .then ((result) => {
+          return res.redirect("users", {
+            title:"usuarios".toUpperCase(),
+            users:users,
+            
+        })
+      })
+    
+  
+  }, 
+  
+}

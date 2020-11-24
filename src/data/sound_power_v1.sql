@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-11-2020 a las 01:00:35
+-- Tiempo de generación: 22-11-2020 a las 19:53:20
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.33
 
@@ -41,9 +41,19 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `imagen` varchar(100) DEFAULT NULL
+  `nombre` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `categories`
+--
+
+INSERT INTO `categories` (`id`, `nombre`) VALUES
+(1, 'Cuerdas'),
+(2, 'Teclados'),
+(3, 'Tecnica'),
+(4, 'Accesorios'),
+(5, 'Vientos');
 
 -- --------------------------------------------------------
 
@@ -53,9 +63,20 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `colors` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `imagen` varchar(100) DEFAULT NULL
+  `nombre` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `colors`
+--
+
+INSERT INTO `colors` (`id`, `nombre`) VALUES
+(1, 'Rojo'),
+(2, 'Azul'),
+(3, 'Negro'),
+(4, 'Dorado'),
+(5, 'Marron'),
+(6, 'Gris');
 
 -- --------------------------------------------------------
 
@@ -65,9 +86,20 @@ CREATE TABLE `colors` (
 
 CREATE TABLE `marcas` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(60) NOT NULL,
-  `imagen` varchar(100) DEFAULT NULL
+  `nombre` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `marcas`
+--
+
+INSERT INTO `marcas` (`id`, `nombre`) VALUES
+(3, 'Casio'),
+(1, 'Fender'),
+(2, 'Gibson'),
+(6, 'Marshall'),
+(5, 'Technics'),
+(4, 'Yamaha');
 
 -- --------------------------------------------------------
 
@@ -122,9 +154,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nombre`, `apellido`, `email`, `contraseña`, `direccion`, `localidad`, `avatar`, `rol`) VALUES
 (1, 'Julian', 'Aquino', 'julian@gmail.com', '$2b$10$Z2wnmpVGg6qD5Qt1vPZskOhY54Ki8qSBfpgCYU.IIYMblHnyPk8fu', NULL, NULL, 'default-image.png', 'user'),
-(2, 'francisco', 'rogido', 'franrogi30@gmail.com', '$2b$10$82W92NuROgKi.O6BxpYsROHZ1.tmB0ZvXjb4b21D1AsfR4kuTtWsy', NULL, NULL, 'avatar-1605195997086.png', 'admin'),
-(3, 'jaun', 'pablo', 'juan@pablo.com', '$2b$10$HyQPjAi9LjAXm.pM9NRlIeNDAcqTuytCOI7vjApW/jf4W8hiGb50O', NULL, NULL, 'avatar-1605199846431.png', 'user'),
-(4, 'Julian', 'puglia', 'jlian@puglia.com', '$2b$10$5wfzb3G7oVSzesIgWWCM3ORXqvRlqxsxvydjecfldcsDGEZ7kaoq6', NULL, NULL, 'avatar-1605202618396.png', 'user');
+(2, 'francisco', 'rogido', 'franrogi30@gmail.com', '$2b$10$82W92NuROgKi.O6BxpYsROHZ1.tmB0ZvXjb4b21D1AsfR4kuTtWsy', NULL, NULL, 'avatar-1605195997086.png', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -158,8 +188,7 @@ ALTER TABLE `colors`
 --
 ALTER TABLE `marcas`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nombre_UNIQUE` (`nombre`),
-  ADD UNIQUE KEY `imagen_UNIQUE` (`imagen`);
+  ADD UNIQUE KEY `nombre_UNIQUE` (`nombre`);
 
 --
 -- Indices de la tabla `products`
@@ -200,19 +229,19 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT de la tabla `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `colors`
 --
 ALTER TABLE `colors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
