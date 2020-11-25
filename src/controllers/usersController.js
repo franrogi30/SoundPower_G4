@@ -166,16 +166,12 @@ module.exports = {
   },
   delete : (req,res)=>{
     db.users.destroy ({
-        where: {
-            id: req.params.id
-        }
+        where: 
+           db.users.id == req.params.id
+        
       })
       .then ((result) => {
-          return res.render("users", {
-            title:"usuarios".toUpperCase(),
-            user:user,
-            
-        })
+          return res.redirect("users")
       })
     
   

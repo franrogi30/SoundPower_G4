@@ -112,10 +112,10 @@ module.exports = {
       precio: req.body.precio,
       marca_id: req.body.mark,
       categoria_id: req.body.class,
-      imagen: req.files[0] ? req.files[0].filename : "default-image.png",
+   
     })
     .then((Result) => {
-      return res.redirect("/products");
+      return res.render("/products/:'req.params.id'/modify");
     });
   res.render("products", {
     title: "Productos",
@@ -180,15 +180,12 @@ module.exports = {
   delete: (req, res) => {
     db.products.destroy({
       
-        where: {
-            id: req.body.id
-        }
+        where: 
+            db.products.id == req.body.id
+        
       })
       .then ((result) => {
-          return res.render("products", {
-            title:"productos".toUpperCase(),
-            products:products
-          })
+          return res.redirect("/products")
         })
         }
       
