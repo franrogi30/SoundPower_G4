@@ -22,3 +22,7 @@ border-radius: 5px;
     border-radius:3px ;
     padding: 1vh 2vw;
 }
+
+section .contenido figure img {
+    width: 90%;
+}

@@ -9,27 +9,36 @@
 <div class="container">
     <section class="listadoProductos">
     <div class="row products">
-        <div class="col-12">
+        <div class="col-12" >
             <h2>
             <%= title %>
             </h2>
-            <div class="filas col-12 col-md-4">
+            <div class="filas col-12 ">
                 <% for (let i = 0; i < products.length;i++) { %>
-               <ul style="list-style: none;">
-                 <li>   <article class="row">
-                    <figure class="col-12 col-md-2>
-                    
-                            <div ">
-                        <img src="/images/products/<%- products[i].imagen %>" alt="">
-                            </div>
-                    </figure>
-                            <div style="margin: 2vh 0;" class="col-12 col-md-10">
-                            <a  href="/products/details/:products[i].id">  <%= products[i].nombre%></a>
-                             <h5 style="margin-top: 2vh;"> $ <%= products[i].precio %></h5>
-                            </div>
-                                                
-                </li> </article>
-            </ul>     
+                    <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+
+                        <div class="contenido">
+
+                            <figure>
+                                <a style="padding: 10vh 0 ;" href="products/detail/<%= products[i].id %> "><img style="border-radius: 3px;" src="/images/products/<%- products[i].imagen %>  " alt=" "></a>
+                            </figure>
+
+                            <article>
+                                <h2>$
+                                    <%- (products[i].precio - products[i].precio * products[i].descuento / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %>
+                                </h2>
+                                <% if (products[i].descuento != 0) { %>
+                                    <span><%- products[i].descuento %>% OFF</span>
+                                    <% } %>
+                                        <p>
+                                            <%- products[i].nombre %>
+                                        </p>
+                            </article>
+                        </div>
+
+                    </div>
+                </div>
                     <% } %> 
                 </div>
                     </div>
