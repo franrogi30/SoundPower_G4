@@ -56,7 +56,8 @@ module.exports = {
         where: {
           email: req.body.email,
         },
-      }).then((user) => {
+      })
+      .then((user) => {
           req.session.user = {
             id: user.id,
             nick: user.nombre + " " + user.apellido,
@@ -71,13 +72,16 @@ module.exports = {
             avatar:user.avatar
 
           });
-        }).catch((error) => res.send(error));
+
+        })
+        .catch((error) => res.send(error));
     } else {
       res.render("login", {   
         title : "Ingresá a tu cuenta",
       
       errors : errors.mapped(),
-      old : req.body});
+      old : req.body
+      });
     }
   },
 
@@ -135,15 +139,16 @@ module.exports = {
   },
   processProfile: (req, res) => {
     let errors = validationResult(req);
+    console.log(req.params.id +"*************************")
     if (errors.isEmpty()) {
       db.users.update({
         
         nombre: req.body.lname,
-        apellido: req.body.lname,
+        apellido: req.body.fname,
         email: req.body.email,
-        direccion: req.body.address,
-        telefono: req.body.phone,
-        contraseña: bcrypt.hashSync(req.body.pass, 10),
+        direccion: req.body.direccion,
+        //telefono: req.body.phone,
+        password: bcrypt.hashSync(req.body.pass, 10),
         
       },{
         where:{

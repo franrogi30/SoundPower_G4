@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
   let elementos = formRegister.elements;
   let admin = qs("#admin");
   let user = qs("#user");
-  let key = qs("#key;")
+  let key = qs("#key")
   let inputFname = qs("#fname");
   let inputLname = qs("#lname");
   let inputEmail = qs("#email");
@@ -23,6 +23,15 @@ window.addEventListener("load", function () {
 
   let regExPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$/;
   console.log(inputEmail);
+
+  admin.addEventListener("click", function(){
+    if(admin.checked== true ){ 
+
+      key.style.display="block"
+    }else{
+      key.style.display="none"}
+  })
+
   inputFname.addEventListener("blur", function () {
     switch (true) {
       case this.value == 0:
@@ -170,9 +179,5 @@ window.addEventListener("load", function () {
   );
 
 });
-admin.addEventListener("click", function(){
-    if(admin.checked== true ){ 
-    document.getElementById("key").style.display="block"
-    }else{document.getElementById("key").style.display="none"}
-  })
+
   

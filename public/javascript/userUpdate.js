@@ -14,7 +14,7 @@ window.addEventListener('load',function(){
     let inputFname = qs('#fname');
     let inputLname = qs('#lname');
     let inputEmail = qs('#email');
-    
+    //let inputAvatar = qs('#avatar');
     let inputPass = qs('#pass');
     let inputCpass = qs('#cpass');
     
@@ -68,7 +68,21 @@ window.addEventListener('load',function(){
                 break;
         }
     })
-      
+
+    // inputAvatar.addEventListener('change',function(e){
+
+    //     let reader = new FileReader();
+
+    //     reader.readAsDataURL(e.target.files[0]);
+
+    //     reader.onload = function(){
+    //             vistaPrevia.src = reader.result;
+    //             inputAvatar.classList.remove('is-invalid')
+    //             inputAvatar.classList.add('is-valid');
+    //             errorAvatar.innerHTML = ""
+    //     }      
+    // })
+        
     inputPass.addEventListener('blur',function(){
         switch (true) {
 
@@ -104,6 +118,30 @@ window.addEventListener('load',function(){
         }
     })
 
-  
+    // checkBases.addEventListener('click',function(){
+    //         checkBases.classList.toggle('is-valid');
+    //         checkBases.classList.remove('is-invalid');
+    //         errorBases.innerHTML = ""
+    // })
+
+    formRegister.addEventListener('submit',function(event){
+        event.preventDefault();
+        // if(checkBases.checked == false){
+        //     checkBases.classList.add('is-invalid');
+        //     errorBases.innerHTML = "Debes aceptar las bases y condiciones"
+        // }
+        let error = false
+        for (let index = 0; index < elementos.length-1; index++) {
+            if(elementos[index].value == 0){
+                elementos[index].classList.add('is-invalid');
+               error = true;
+            }
+        }
+        if(!error){
+            formRegister.submit()
+        }else{
+            msgError.innerHTML = "Los campos señadados son obligatorios"
+        }
+    })
 
   })
