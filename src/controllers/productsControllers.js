@@ -22,7 +22,8 @@ module.exports = {
       });
   },
   productsDetails: (req, res) => {
-    db.products.findByPk(req.params.id).then((product) => {
+    db.products.findByPk(req.params.id)
+    .then((product) => {
       res.render("productDetails", {
         title: "Detalle del Producto",
         product: product,
@@ -36,19 +37,17 @@ module.exports = {
     let marcas = db.Marcas.findAll({
       order: [["id", "ASC"]],
     });
-    let colors=db.colors.findAll({
-        order : [
-            ['id','ASC']
-        ]
 
-    })
+        
 
-    Promise.all([categorias, marcas, colors]).then(([categorias, marcas, colors]) => {
+    
+
+    Promise.all([categorias, marcas]).then(([categorias, marcas]) => {
       res.render("productAdd", {
         title: "Agregar Productos",
         categorias: categorias,
         marcas: marcas,
-        colors: colors
+   
       });
     });
   },
@@ -58,7 +57,7 @@ module.exports = {
         nombre: req.body.titulo,
         descripcion: req.body.descripcion,
         descuento: req.body.discount,
-        colors: req.body.color,
+   
         precio: req.body.precio,
         marca_id: req.body.mark,
         categoria_id: req.body.class,
@@ -96,7 +95,10 @@ module.exports = {
     });
   },
   discount: (req, res) => {
-    db.products.findAll().then((products) => {
+    db.products.findAll({
+      where: db.products.discount > 10 
+    })
+    .then((products) => {
       res.render("products", {
         title: "Oportunidades",
         products: products,
@@ -107,16 +109,15 @@ module.exports = {
     let category = req.params.category;
     db.products
       .findAll({
-        where: {
-          Categoria: category,
-        },
+        where: 
+          db.products.categoria_id == category,
+        
       })
-      .then((Categoria) => {
+      .then((products) => {
         res.render("products", {
           title: "Categoria " + category.toUpperCase(),
-          producto: producto,
-          price: producto.price,
-          image: producto.image,
+          products: products,
+         
         });
       });
   },
@@ -125,25 +126,34 @@ module.exports = {
 
     if (errors.isEmpty()) {
       let buscar = req.query.search;
-      let productos = [];
-      dbProducts.forEach((producto) => {
-        if (producto.name.toLowerCase().includes(buscar)) {
-          productos.push(producto);
-        }
-      });
+     
+      db.products.findAll({
+        where: db.products.nombre == buscar
+       
+        
+      }).then ((products)=>{
+     
       res.render("products", {
         title: "Resultado para " + buscar,
-        producto: productos,
-      });
+        products: products,
+      })})
     } else {
       return res.redirect("/");
     }
   },
   delete: (req, res) => {
     db.products.destroy({
-      where: {
-        id: req.params.id,
-      }.then((result) => {}),
-    });
-  },
+      
+        where: {
+            id: req.body.id
+        }
+      })
+      .then ((result) => {
+          return res.render("products", {
+            title:"productos".toUpperCase(),
+            products:products
+          })
+        })
+        }
+      
 };

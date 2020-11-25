@@ -13,23 +13,25 @@
             <h2>
             <%= title %>
             </h2>
-        <div class="filas">
-                        <% for (let i = 0; i < products.length;i++) { %>
-                       <ul>
-                         <li>   <article>
-                            <figure>
-                                <ul><
-                                <a href="/products/details/<%= product.id %> "><img src="/images/products/<%- product.imagen %>  " alt=" ">
-                                    <%- product.nombre %>
-                                </a>
-                            </figure>
-                            <h5>
-                                    <%- product.price %>
-                            </h5> 
-                        </li> </article>
-                    </ul>     
-                            <% } %> 
-                        </div>
+            <div class="filas">
+                <% for (let i = 0; i < products.length;i++) { %>
+               <ul style="list-style: none;">
+                 <li>   <article class="row">
+                    <figure class="col-12 col-md-2>
+                    
+                            <div ">
+                        <img src="/images/products/<%- products[i].imagen %>" alt="">
+                            </div>
+                    </figure>
+                            <div style="margin: 2vh 0;" class="col-12 col-md-10">
+                            <a  href="/products/details/:products[i].id">  <%= products[i].nombre%></a>
+                             <h5 style="margin-top: 2vh;"> $ <%= products[i].precio %></h5>
+                            </div>
+                                                
+                </li> </article>
+            </ul>     
+                    <% } %> 
+                </div>
                     </div>
                 </section>
             </div>

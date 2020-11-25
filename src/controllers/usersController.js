@@ -21,6 +21,8 @@ module.exports = {
       db.users.create({
         nombre: req.body.fname,
         apellido: req.body.lname,
+        telefono: req.body.phone,
+        direccion: req.body.address,
         email: req.body.email,
         contraseña: bcrypt.hashSync(req.body.pass, 10),
         avatar: req.files[0] ? req.files[0].filename : "default-image.png",
@@ -54,7 +56,8 @@ module.exports = {
         where: {
           email: req.body.email,
         },
-      }).then((user) => {
+      })
+      .then((user) => {
           req.session.user = {
             id: user.id,
             nick: user.nombre + " " + user.apellido,
@@ -69,13 +72,16 @@ module.exports = {
             avatar:user.avatar
 
           });
-        }).catch((error) => res.send(error));
+
+        })
+        .catch((error) => res.send(error));
     } else {
       res.render("login", {   
         title : "Ingresá a tu cuenta",
       
       errors : errors.mapped(),
-      old : req.body});
+      old : req.body
+      });
     }
   },
 
@@ -124,42 +130,41 @@ module.exports = {
         res.render("profile", {
           userData: user,
           userSession: req.session.user,
-          rol: req.body.rol,
-          id:user.id,
-          avatar:user.avatar,
+       
         });
       })
       .catch((error) => {
         res.send(error);  
-      })
+      });
   },
-
   processProfile: (req, res) => {
     let errors = validationResult(req);
     if (errors.isEmpty()) {
       db.users.update({
         
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
+        nombre: req.body.lname,
+        apellido: req.body.lname,
         email: req.body.email,
-        direccion: req.body.direccion,
-        telefono: req.body.telefono,
+        direccion: req.body.address,
+        telefono: req.body.phone,
         contraseña: bcrypt.hashSync(req.body.pass, 10),
         
       },{
         where:{
-          id:userData.id
-        }
+            
+        id:req.params.id
+      }
       })
         .then((result) => {
-          return res.redirect("login" + req.session.user.id,{
-            userSession: req.session.user,
-          });
+          return res.redirect("/" )
+         
         })
+      
         .catch((err) => {
           console.log(err);
-        });
-    } else {
+        })
+        
+      } else {
       res.render("profile", { errors: errors.errors });
     }
   },
@@ -170,9 +175,9 @@ module.exports = {
         }
       })
       .then ((result) => {
-          return res.redirect("users", {
+          return res.render("users", {
             title:"usuarios".toUpperCase(),
-            users:users,
+            user:user,
             
         })
       })
