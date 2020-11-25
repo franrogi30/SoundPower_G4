@@ -50,7 +50,7 @@
                 <% if (typeof user != "undefined" && user) { %>
                   <% if ( user.rol == "admin" ) { %>
                   </form>    
-                  <form action="/products/modify/:<%= product.id %>"_method=PUT method="POST">
+                  <form action="/products/:<%= product.id %>/modify"_method=PUT method="POST">
                     <a href='' class="col-6"><button  class="col-12 comprar">Modificar</button></a>
                   </form>    
                   <form action="/products/delete/:<%= product.id %>"_method=DELETE method="POST">

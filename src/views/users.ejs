@@ -32,7 +32,7 @@
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>             
-                        <button class="btn btn-submit" action="/users/admin/:('<%- users[i].id %>')" style='background: #045757; color: #e4e4e4;' type="reset">Cancelar</button>
+                        <button class="btn btn-submit" action="/users/admin/:<%- users[i].id %>" style='background: #045757; color: #e4e4e4;' type="reset">Cancelar</button>
                         <button class=" btn btn-submit" style="background: #e4e4e4;color: #045757" type="submit" name="id" value="">Editar</button>
                     </div>
                     </form>    
