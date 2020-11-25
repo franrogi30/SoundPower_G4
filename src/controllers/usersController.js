@@ -139,15 +139,16 @@ module.exports = {
   },
   processProfile: (req, res) => {
     let errors = validationResult(req);
+    console.log(req.params.id +"*************************")
     if (errors.isEmpty()) {
       db.users.update({
         
         nombre: req.body.lname,
-        apellido: req.body.lname,
+        apellido: req.body.fname,
         email: req.body.email,
-        direccion: req.body.address,
-        telefono: req.body.phone,
-        contraseña: bcrypt.hashSync(req.body.pass, 10),
+        direccion: req.body.direccion,
+        //telefono: req.body.phone,
+        password: bcrypt.hashSync(req.body.pass, 10),
         
       },{
         where:{

@@ -19,7 +19,7 @@ router.post('/login',loginValidator,controller.processLogin)
 
 //profile page
 router.get('/profile/:id',controller.profile)
-router.post('/profile/:id',upAvatar.any(),profileValidator,controller.processProfile)
+router.put('/profile/:id',upAvatar.any(),profileValidator,controller.processProfile)
 
 
 // logout
