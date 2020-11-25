@@ -26,10 +26,13 @@ module.exports = {
     .then((product) => {
       res.render("productDetails", {
         title: "Detalle del Producto",
-        product: product,
+        product: db.products,
       });
     });
   },
+
+
+  //agregar producto
   productsAdd: (req, res) => {
     let categorias = db.categories.findAll({
       order: [["id", "ASC"]],
@@ -71,16 +74,20 @@ module.exports = {
       products: db.products,
     });
   },
+
+  //carrito
   cart: (req, res) => {
     res.render("cart", {
       title: "Carrito",
     });
   },
+
+  //modificar productos
   modify: (req, res) => {
     let id = req.params.id;
     db.products.findAll({
       where: {
-        id: id,
+        id: req.params.id
       }.then((Categoria) => {
         res.render("modifyProduct", {
           title: "Modificar Productos",
@@ -94,6 +101,29 @@ module.exports = {
       }),
     });
   },
+
+  save: (req,res) =>{
+
+    db.products
+    .update({
+      nombre: req.body.titulo,
+      descripcion: req.body.descripcion,
+      descuento: req.body.discount,
+      precio: req.body.precio,
+      marca_id: req.body.mark,
+      categoria_id: req.body.class,
+      imagen: req.files[0] ? req.files[0].filename : "default-image.png",
+    })
+    .then((Result) => {
+      return res.redirect("/products");
+    });
+  res.render("products", {
+    title: "Productos",
+    products: db.products,
+  });
+  },
+
+  //descuentos
   discount: (req, res) => {
     db.products.findAll({
       where: db.products.discount > 10 
@@ -105,6 +135,8 @@ module.exports = {
       });
     });
   },
+
+  //categorias
   category: (req, res) => {
     let category = req.params.category;
     db.products
@@ -121,6 +153,8 @@ module.exports = {
         });
       });
   },
+
+  //busqueda
   search: function (req, res) {
     let errors = validationResult(req);
 
@@ -141,6 +175,8 @@ module.exports = {
       return res.redirect("/");
     }
   },
+
+  //borrar producto
   delete: (req, res) => {
     db.products.destroy({
       
