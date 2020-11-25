@@ -17,7 +17,7 @@ window.addEventListener('load',function(){
     //let inputAvatar = qs('#avatar');
     let inputPass = qs('#pass');
     let inputCpass = qs('#cpass');
-    let checkBases = qs('.custom-control-input');
+    //let checkBases = qs('.custom-control-input');
 
     let regExEmail =  /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]:+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/;
 

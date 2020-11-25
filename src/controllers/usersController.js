@@ -143,8 +143,8 @@ module.exports = {
     if (errors.isEmpty()) {
       db.users.update({
         
-        nombre: req.body.lname,
-        apellido: req.body.fname,
+        nombre: req.body.fname,
+        apellido: req.body.lname,
         email: req.body.email,
         direccion: req.body.direccion,
         //telefono: req.body.phone,
