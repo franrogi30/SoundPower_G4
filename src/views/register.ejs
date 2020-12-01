@@ -16,48 +16,59 @@
         <li  style="color:red; display: block; " >
           <%= errors[i].msg %>  
         </li>
-      </ul><br>
-       <% } %> 
-       <% } %> 
+        </ul><br>
+        <% } %> 
+        <% } %> 
 
-       <form id="register" action="/users/register" method="POST" enctype="multipart/form-data">
+       <form id="register" class="col-12 col-lg-6" action="/users/register" method="POST" enctype="multipart/form-data">
         <fieldset >
-          <div class="form-group Usuario col-12 col-lg-6">
-            <h2 class="fs-title">Crea tu Usuario</h2>
-            <div class="form-row">
+          <div class="form-row">
+          <div class="form-group  col-12">
+            <div class="col-12 Usuario">
+            <h2 class="fs-title col-12">Crea tu Usuario</h2>
+            
               <div class="form-group col-12 ">
-            <label class="col-12" for="email">Email</label>
+            
+                <label class="col-12" for="email">Email</label>
             <input
               type="text"
-              class="form-control col-12" <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":(typeof errors != 'undefined' && errors.email)?"is-invalid": ""  %>"
+              class="form-control " <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":(typeof errors != 'undefined' && errors.email)?"is-invalid": ""  %>"
                         id="email" value="<%= (typeof old != 'undefined' && old.email)?old.email:'' %>" placeholder="email" name="email"/>
                         <small id="errorEmail" class="text-danger"><%= (typeof errors != 'undefined' && errors.email)?errors.email.msg: "" %> </small>
-            <label class="col-12" for="password">Contraseña</label>
+           
+                        <label class="col-12" for="password">Contraseña</label>
             <input
               type="password"
-              class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>
+              class="form-control col-l2" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>
                         id="pass" placeholder="contraseña" name="pass"/>
                         <small id="errorPass" class="text-danger"><%= (typeof errors != 'undefined' && errors.pass)?errors.pass.msg: "" %> </small>
-                      </div>
+                   
             
             <label class="col-12" for="password">Repita Contraseña</label>
             <input
               type="password"
-              class="form-control col-12" <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
+              class="form-control " <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
                         id="cpass" placeholder="contraseña" name="cpass"/>
                         <small id="errorCpass" class="text-danger"><%= (typeof errors != 'undefined' && errors.cpass)?errors.cpass.msg: "" %> </small>
-                      </div>
+                      
                       <div class="form-group col-12 ">
                         <div class="custom-file mt-4">
                           <input type="file" class="custom-file-input " id="avatar" lang="en" name="avatar">
                           <label class="custom-file-label" for="customFileLang">Imagen de perfil</label>
                           <small id="errorAvatar" class="text-danger"><%= (typeof errors != 'undefined' && errors.avatar)?errors.avatar.msg: "" %> </small>
+                        </div>
+                      </div>
+            </div>
+            
+            </div>
+          </div>
+          </div>
         </fieldset>
         <fieldset>
           <div class="form-row">
 
             <div class="form-group col-12">
-          <div class="Datos col-12 col-lg-6">
+            <div class="Datos col-12">
             <h2 class="fs-title">Datos Personales</h2>
             <label class="col-12" for="nombre">Nombre</label>
             <input
@@ -72,48 +83,43 @@
               class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
               id="lname"  name="lname"  value="<%= (typeof old != 'undefined' && old.lname)?old.lname:'' %>" placeholder="Apellido" title="El apellido debe tener más de dos caracteres"/>
               <small id="errorLname" class="text-danger"><%= (typeof errors != 'undefined' && errors.lname)?errors.lname.msg: "" %> </small>
-          
-            
-            <label class="col-12" for="email">Telefono</label>
-            <input
-              class="col-12"
-              type="text"
-              name="phone"
-              placeholder="Telefono"
-            />
-            <label class="col-12 col-lg-6" for="address">Domicilio</label>
-            <input class="col-12" name="address" placeholder="Direccion" />
-          </div>
-          <div class="form-row">
+
+           <div class="form-row">
             <div class="col-12 ">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input <%= (typeof old != 'undefined' && old.bases)?"is-valid":(typeof errors != 'undefined' && errors.bases)?"is-invalid": ""  %>" id="customCheck1" name="bases" value="off">
                 <label class="custom-control-label" for="customCheck1">acepto las bases y condiciones</label><br>
                 <a href="" class="text-info">ver bases y condiciones</a><br>
                 <small id="errorBases" class="text-danger"><%= (typeof errors != 'undefined' && errors.bases)?errors.bases.msg: "" %> </small>
-
-                
               </div>
             </div>
+           </div>
+            </div>
+            </div>
+            </div>
         </fieldset>
-        <div class="radial col-6">
+        <div class="radial col-12">
           <div class="row">
           <input type="radio" id="user" class="col-4" name="rol" value="user" checked>Usuario 
           <input type="radio" id="admin" class="col-4" name="rol" value="admin">Administrador
           
           </div>
           <input style="display: none ;" class="col-12" type="text" name="key" id="key" placeholder="Key Empresarial">
-      </div>
+          </div>
       
-            <div class="btEnviar col-1">
+            <div class="btEnviar col-2">
               <button class="btn btn-submit" type="submit">Enviar</button>
             </div>
-          
+         
         
-       </form>
-       <img class="col-12 col-md-6" style="background: #e4e4e4;" id="vistaPrevia">
-       <span id="msgError"></span>
-       </div>
+        </form>
+        <div class="col-12 col-md-6" >
+          <div class="row">
+          <img class="col-12" style="background: #e4e4e4; width: 40vh; border-radius: 3px;" id="vistaPrevia">
+          <span style="color: red;" class="col-12" id="msgError"></span>
+        </div>
+      </div>
+      </div>
     </div>
     <%- include("partials/footer") %>
     <script src="/javascript/userRegister.js"></script>

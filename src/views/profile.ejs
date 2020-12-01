@@ -49,7 +49,7 @@
                                                 title="El nombre debe tener más de dos caracteres"/>
                                                 <small id="errorFname" class="text-danger"><%= (typeof errors != 'undefined' && errors.fname)?errors.fname.msg: "" %> </small>
                                     
-                                    <label  for="email">Apellido</label>
+                                    <label  for="lname">Apellido</label>
                                     <input
                                       type="text"
                                       class="form-control" <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"

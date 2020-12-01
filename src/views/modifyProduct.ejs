@@ -13,14 +13,14 @@
   </h1>
  <div class="formulario col-12 col-md-6 col-lg-6">
        <!--FORMULARIO-->
-  <form action="/products/:id/modify" method="POST">
+  <form action="/products/modify/:id" method="POST">
 
       
   <div class="seleccion-instrumento">
     <h4> Cambiar Categoria</h4>
-    <label> <%- producto.category %></label> <br>
+    <label> <%= producto.categoria %></label> <br>
       <select class="seleccion-de-instrumento col-12 col-md-12 col-lg-6">
-       <option selected>Cambiar Categoria</option>
+       <option selected><%= producto.categoria %></option>
        <option value="cuerdas">Guitarras/Bajos</option>
        <option value="teclados">Teclados/Pianos</option>
        <option value="tecnica">Amplificadores/microfonos</option>
@@ -33,14 +33,14 @@
       </div><br>
       <div class="descripccion ">
         <h4> Cambiar Descripción</h4>
-         <label > <%-producto.description %></label> <br>
+         <label > <%-producto.descripcion %></label> <br>
         <textarea class="col-12 col-md-12 col-lg-6" name="descripcion" rows="6" ></textarea> 
         </div>
     </div>
        <div class="col-sm-12 col-md-6 col-lg-6">
           <div class="precio">
             <h4> Cambiar Precio</h4>
-            <h2>$<%-producto.price%></h2> <br>
+            <h2>$<%=producto.precio%></h2> <br>
              <button  class="boton" type="button">ARS</button>
              <button  class="boton" type="button">USD</button>
               <input type="text" name="precio" id="precio"><br>

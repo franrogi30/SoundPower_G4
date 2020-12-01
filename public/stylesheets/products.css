@@ -14,15 +14,22 @@ border-radius: 5px;
     padding: 1vh 2vw;
     border-radius: 5px;
     margin-bottom: 2vh;
+    
 }
 
 .listadoProductos .products a {
-    color: #e4e4e4;
-    background-color:#045757;
+    
     border-radius:3px ;
     padding: 1vh 2vw;
 }
+section .contenido figure{
+    background: #e4e4e4;
+    border: solid 1px #044343;
+    border-radius: 3px;
+}
 
-section .contenido figure img {
-    width: 90%;
+section .contenido figure:hover  {
+    background: none;
+    size: 300%;
+    border: solid 2px #e4e4e4;
 }

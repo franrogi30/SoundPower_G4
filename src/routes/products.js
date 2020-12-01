@@ -17,14 +17,14 @@ router.get('/cart', Controller.cart)
 
 //Modify Products 
 
-router.get('/:id/modify',Controller.modify)
-router.post('/:id/modify', Controller.save)
+router.get('/modify/:id',Controller.modify)
+router.put('/modify/:id', Controller.save)
 
 // GET de categories
 router.get('/categories/:category/',Controller.category)
 
 //Delete products
-router.post('/delete/:id', Controller.delete)
+router.delete('/delete/:id', Controller.delete)
 
 router.get('/discount',Controller.discount)
 router.get('/search',Controller.search)

@@ -22,7 +22,7 @@ window.addEventListener("load", function () {
   let regExEmail = /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]:+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/;
 
   let regExPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$/;
-  console.log(inputEmail);
+  
 
   admin.addEventListener("click", function(){
     if(admin.checked== true ){ 
@@ -160,9 +160,10 @@ window.addEventListener("load", function () {
     for (let index = 0; index < elementos.length - 1; index++) {
       if (
         elementos[index].value == 0 &&
-        
-        index != 8 &&
-        index != 9
+        index != 4 &&
+        index != 9 &&
+        index != 10 &&
+        index != 11
       ) {
         elementos[index].classList.add("is-invalid");
         error = true;
@@ -171,13 +172,13 @@ window.addEventListener("load", function () {
     if (!error) {
       formRegister.submit();
     } else {
-      msgError.innerHTML = "Los campos señadados son obligatorios";
+      msgError.innerHTML = "Los son obligatorios";
     }
   
-
+console.log(elementos)
    }
   );
 
 });
 
-  
+  console.log()

@@ -41,7 +41,7 @@ window.addEventListener('load',function(){
     inputLname.addEventListener('blur',function(){
         switch (true) {
       
-            case thi    s.value.trim().length <=2:
+            case this.value.trim().length <=2:
                 errorLname.innerHTML = "Tenés que poner al menos tres letras"
                 this.classList.add('is-invalid')
                 break
@@ -143,5 +143,6 @@ window.addEventListener('load',function(){
             msgError.innerHTML = "Los campos señadados son obligatorios"
         }
     })
+    console.log(elementos)
 
   })

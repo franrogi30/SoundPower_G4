@@ -13,13 +13,14 @@
               <h2>
               <%= title %>
               </h2>
-          <div class="filas">
+        <div class="filas">
                         
 
             <% for (let i = 0; i < users.length;i++) { %>
                 <ul style="text-decoration:none ; list-style-type: none;">
                   <li style="text-decoration:none ;">  
-                    <form class="row" action="/users/admin/:<%= users[i].id %>"_method=PUT method="POST">               
+                    <form action="/users/admin/:<%= users[i].id %>"_method=PUT method="POST">               
+                        <div class="row">
                         <div style="vertical-align: middle; object-fit: cover;
                         object-position: top; margin-bottom: 10px ;border-radius: 3px; background-color: #e4e4e4; background-image: url('<%= users[i].imagen %>')"  class="col-12 col-md-2 avatar">
                         </div>
@@ -34,26 +35,18 @@
                         </select>             
                         <button class="btn btn-submit" action="/users/admin/:<%- users[i].id %>" style='background: #045757; color: #e4e4e4;' type="reset">Cancelar</button>
                         <button class=" btn btn-submit" style="background: #e4e4e4;color: #045757" type="submit" name="id" value="">Editar</button>
+                        </div>
                     </div>
                     </form>    
-                        <form action="/users/delete/<%= users[i].id %>"_method=DELETE method="POST">
-                            <button class="btn btn-danger" type="submit" name="id" value="">Borrar usuario <i class="fas fa-trash"></i></button>
-                        </form>
-                </div>     
-                
-                
-                    </li>
-                </ul>  
-    
+                    <form action="/users/delete/<%= users[i].id %>"_method=DELETE method="POST">
+                    <button class="btn btn-danger" type="submit" name="id" value="">Borrar usuario <i class="fas fa-trash"></i></button>
+                  </li>
+                </ul> 
                 <% } %>    
-                    </div>
-            
-                </section>
-            </div>
-            
         </div>
     </div>
-</div>
+    </section>
+ </div>
 
     <%- include("partials/footer") %>
   </body>

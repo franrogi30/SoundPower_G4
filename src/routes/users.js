@@ -19,7 +19,7 @@ router.post('/login',loginValidator,controller.processLogin)
 
 //profile page
 router.get('/profile/:id',controller.profile)
-router.put('/profile/:id',upAvatar.any(),profileValidator,controller.processProfile)
+router.put('/profile/:id',upAvatar.any() ,profileValidator,controller.processProfile)
 
 
 // logout
@@ -27,7 +27,7 @@ router.post('/logout', controller.logout)
 router.get('/logout', controller.logout)
 //admin users
 router.get('/admin/', controller.profiles)
-router.post('/admin/:id', controller.adminProfiles)
+router.put('/admin/:id', controller.adminProfiles)
 // delete user
 router.post('/delete/:id',controller.delete)
 module.exports = router;

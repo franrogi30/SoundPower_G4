@@ -9,19 +9,18 @@
 <div class="container">
     <section class="listadoProductos">
     <div class="row products">
-        <div class="col-12" >
+        <div class="col-12 " >
             <h2>
             <%= title %>
             </h2>
-            <div class="filas col-12 ">
+        </div>
+
                 <% for (let i = 0; i < products.length;i++) { %>
-                    <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="filas col-12 col-md-6 col-xl-3 ">
 
-                        <div class="contenido">
-
-                            <figure>
-                                <a style="padding: 10vh 0 ;" href="products/detail/<%= products[i].id %> "><img style="border-radius: 3px;" src="/images/products/<%- products[i].imagen %>  " alt=" "></a>
+                <div class="contenido ">
+                            <figure class="justify-content-center align-items-center">
+                                <a  class="d-flex justify-content-center align-items-center; "  href="products/details/<%= products[i].id %> "><img style="border-radius: 3px; height: 30vh; width: 80%;" src="/images/products/<%- products[i].imagen %>  " alt=" "></a>
                             </figure>
 
                             <article>
@@ -35,18 +34,12 @@
                                             <%- products[i].nombre %>
                                         </p>
                             </article>
-                        </div>
-
                     </div>
                 </div>
                     <% } %> 
-                </div>
-                    </div>
-                </section>
-            </div>
-            
-        </div>
+        
     </div>
+    </section>
 </div>
 
     <%- include("partials/footer") %>

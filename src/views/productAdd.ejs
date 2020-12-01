@@ -23,7 +23,7 @@
     </div>
     <div>
     <label class="col-12" for=""> Tipo de instrumento *</label> 
-    <select class="form-control" name="genre" id="">
+    <select class="form-control" name="class" id="">
       <option value="">Elige la Clase del Intrumento</option>
       <% categorias.forEach(categoria => { %>
           <option value="<%= categoria.id %>"><%= categoria.nombre %> </option>
@@ -32,7 +32,7 @@
     </div>
       <div>
       <label  class="col-12" for=""> Marca *</label> 
-      <select class="form-control" name="genre" id="">
+      <select class="form-control" name="mark" id="">
         <option value="">Elige la Marca</option>
         <% marcas.forEach(marca => { %>
             <option value="<%= marca.id %>"><%= marca.nombre %> </option>

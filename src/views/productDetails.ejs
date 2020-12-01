@@ -19,7 +19,8 @@
             <figure class="imagen">
               <img
                 class=" col-12"
-                src= <%= product.imagen %>
+                style="border-radius: 3px; height: 30vh; width: 80%;" 
+                src=  "/images/products/<%= product.imagen %>"
                 alt="imagen"
               />
             </figure>
@@ -50,11 +51,11 @@
                 <% if (typeof user != "undefined" && user) { %>
                   <% if ( user.rol == "admin" ) { %>
                   </form>    
-                  <form action="/products/:<%= product.id %>/modify"_method=PUT method="POST">
-                    <a href='' class="col-6"><button  class="col-12 comprar">Modificar</button></a>
-                  </form>    
-                  <form action="/products/delete/:<%= product.id %>"_method=DELETE method="POST">
-                 <a href='' class="col-6"><button  class="col-12 favoritos">Eliminar</button></a>
+                
+                    <a href='/products/modify/<%= product.id %>' class="col-6"><button  class="col-12 comprar">Modificar</button></a>
+            
+                
+                 <a href='/products/delete/<%= product.id %>' class="col-6"><button  class="col-12 favoritos">Eliminar</button></a>
                  <% } else{ %>
                   <a href='/products/cart' class="col-6"><button  class="col-12 comprar">comprar</button></a>
                 <% } %>

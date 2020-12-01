@@ -24,7 +24,7 @@ module.exports= [
         })
         .then(user => {
             console.log("fwerwrwer")
-            if(!bcrypt.compareSync(value,user.dataValues.password)){ //si no machea la contraseña
+            if(!bcrypt.compareSync(value,user.dataValues.contraseña)){ //si no machea la contraseña
                 return Promise.reject('No coincide la contraseña')
             }
             

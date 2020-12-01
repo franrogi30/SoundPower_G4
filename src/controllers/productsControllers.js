@@ -26,7 +26,7 @@ module.exports = {
     .then((product) => {
       res.render("productDetails", {
         title: "Detalle del Producto",
-        product: db.products,
+        product: product,
       });
     });
   },
@@ -85,22 +85,18 @@ module.exports = {
   //modificar productos
   modify: (req, res) => {
     let id = req.params.id;
-    db.products.findAll({
-      where: {
-        id: req.params.id
-      }.then((Categoria) => {
+    db.products.findByPk(id, 
+      {includes: [{ association: "marca", association: "categoria" }]})
+      .then((producto) => {
         res.render("modifyProduct", {
           title: "Modificar Productos",
-          id: id,
           producto: producto,
-          price: producto.price,
-
-          description: producto.description,
-          category: producto.category,
+          
+       
+          
         });
-      }),
-    });
-  },
+      })
+    },
 
   save: (req,res) =>{
 
@@ -115,7 +111,7 @@ module.exports = {
    
     })
     .then((Result) => {
-      return res.render("/products/:'req.params.id'/modify");
+      return res.redirect("/products/modify/"+req.params.id);
     });
   res.render("products", {
     title: "Productos",
