@@ -18,7 +18,7 @@ router.get('/cart', Controller.cart)
 //Modify Products 
 
 router.get('/modify/:id',Controller.modify)
-router.put('/modify/:id', Controller.save)
+router.post('/modify/:id', Controller.save)
 
 // GET de categories
 router.get('/categories/:category/',Controller.category)

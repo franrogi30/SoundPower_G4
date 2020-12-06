@@ -29,5 +29,5 @@ router.get('/logout', controller.logout)
 router.get('/admin/', controller.profiles)
 router.put('/admin/:id', controller.adminProfiles)
 // delete user
-router.post('/delete/:id',controller.delete)
+router.delete('/delete/:id',controller.delete)
 module.exports = router;

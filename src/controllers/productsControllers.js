@@ -109,7 +109,12 @@ module.exports = {
       marca_id: req.body.mark,
       categoria_id: req.body.class,
    
-    })
+    },{
+      where:{
+          
+      id:req.params.id
+    }
+  })
     .then((Result) => {
       return res.redirect("/products/modify/"+req.params.id);
     });
@@ -135,11 +140,11 @@ module.exports = {
   //categorias
   category: (req, res) => {
     let category = req.params.category;
-    db.products
+    db.categories
       .findAll({
-        where: 
-          db.products.categoria_id == category,
-        
+        where:{ 
+          nombre:category,
+        }
       })
       .then((products) => {
         res.render("products", {
@@ -176,9 +181,9 @@ module.exports = {
   delete: (req, res) => {
     db.products.destroy({
       
-        where: 
-            db.products.id == req.body.id
-        
+        where: {
+            id: req.params.id
+        }
       })
       .then ((result) => {
           return res.redirect("/products")

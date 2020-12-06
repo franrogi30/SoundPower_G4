@@ -31,7 +31,7 @@
             <div class="descripcion">
               <h3>DESCRIPCION</h3>
               <p>
-                <%= product.description %>
+                <%= product.descripcion %>
               </p>
             </div>
             <div class="opciones col-12">
@@ -50,12 +50,12 @@
               
                 <% if (typeof user != "undefined" && user) { %>
                   <% if ( user.rol == "admin" ) { %>
-                  </form>    
+                  
                 
                     <a href='/products/modify/<%= product.id %>' class="col-6"><button  class="col-12 comprar">Modificar</button></a>
             
                 
-                 <a href='/products/delete/<%= product.id %>' class="col-6"><button  class="col-12 favoritos">Eliminar</button></a>
+                 <a href='/products/delete/<%- product.id %>' class="col-6"><button  class="col-12 favoritos">Eliminar</button></a>
                  <% } else{ %>
                   <a href='/products/cart' class="col-6"><button  class="col-12 comprar">comprar</button></a>
                 <% } %>

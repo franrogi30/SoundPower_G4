@@ -140,7 +140,7 @@ window.addEventListener('load',function(){
         if(!error){
             formRegister.submit()
         }else{
-            msgError.innerHTML = "Los campos señadados son obligatorios"
+            msgError.innerHTML = "Los campos son obligatorios"
         }
     })
     console.log(elementos)

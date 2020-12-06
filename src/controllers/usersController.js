@@ -110,11 +110,15 @@ module.exports = {
       email: req.body.email,
       rol: req.body.rol
       
-    })
+    },{
+      where:{
+          
+      id:req.body.id
+    }
+  })
       .then((result) => {
-        return res.redirect("users",{
-          title:"usuarios".toUpperCase(),
-          users:users,
+        return res.redirect("/users/admin",{
+         
         });
       })
   },
@@ -128,7 +132,6 @@ module.exports = {
         res.render("profile", {
           userData: user,
           userSession: req.session.user,
-       
         });
       })
       .catch((error) => {
@@ -137,7 +140,6 @@ module.exports = {
   },
   processProfile: (req, res) => {
     let errors = validationResult(req);
-    console.log(req.params.id +"*************************")
     if (errors.isEmpty()) {
       db.users.update({
         
@@ -146,7 +148,6 @@ module.exports = {
         email: req.body.email,
         direccion: req.body.direccion,
         //telefono: req.body.phone,
- 
         
       },{
         where:{
@@ -156,7 +157,7 @@ module.exports = {
       })
         .then((result) => {
           return res.redirect("/" )
-         
+
         })
       
         .catch((err) => {
@@ -169,12 +170,12 @@ module.exports = {
   },
   delete : (req,res)=>{
     db.users.destroy ({
-        where: 
-           db.users.id == req.params.id
-        
+        where:{ 
+      id :req.params.id
+        }
       })
       .then ((result) => {
-          return res.redirect("users")
+          return res.redirect("/users/admin")
       })
     
   
