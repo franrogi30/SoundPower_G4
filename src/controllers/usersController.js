@@ -25,10 +25,23 @@ module.exports = {
         contraseña: bcrypt.hashSync(req.body.pass, 10),
         avatar: req.files[0] ? req.files[0].filename : "default-image.png",
         rol: req.body.rol
-      }).then( result => {
+      }) .then((user) => {
+        req.session.user = {
+          id: user.id,
+          nick: user.nombre + " " + user.apellido,
+          email: user.email,
+          avatar:user.avatar,
+          rol:user.rol
+        };
+        res.locals.user = req.session.user;
+        res.render("index", {
+          
+          userSession: req.session.user,
+          avatar:user.avatar
 
-        res.redirect("/users/login")
-        
+        });
+
+    
       }).catch(error => {
         res.send(error)
       })
