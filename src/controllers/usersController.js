@@ -75,7 +75,10 @@ module.exports = {
             email: user.email,
             avatar:user.avatar,
             rol:user.rol
-          };
+          }
+            if(req.body.remember){
+            res.cookie('userSP', req.session.user, {maxAge:1000*60*60*12})
+          }
           res.locals.user = req.session.user;
           res.render("index", {
             
