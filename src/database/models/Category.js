@@ -11,8 +11,6 @@ module.exports = (sequelize, dataTypes) => {
             type:dataTypes.STRING(45),
             allowNull:false,
         },
-       
-
     }
     let config = {
         tableName: "categories",

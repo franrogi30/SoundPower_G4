@@ -7,6 +7,7 @@ const db = require("../database/models");
 const { Result } = require("express-validator");
 const Product = require("../database/models/Product");
 const { and } = require("sequelize");
+const { Op } = require('sequelize')
 
 module.exports = {
   products: (req, res) => {
@@ -140,17 +141,17 @@ module.exports = {
   //categorias
   category: (req, res) => {
     let category = req.params.category;
-    db.categories
-      .findAll({
-        where:{ 
-          nombre:category,
-        }
-      })
-      .then((products) => {
+    
+    db.categories.findOne({
+      where:{id:req.params.category},
+    
+      include:[{association: 'products',
+      }]
+  })
+  .then((categories) => {
         res.render("products", {
           title: "Categoria " + category.toUpperCase(),
-          products: products,
-         
+          categoria:categories         
         });
       });
   },
@@ -163,10 +164,13 @@ module.exports = {
       let buscar = req.query.search;
      
       db.products.findAll({
-        where: db.products.nombre == buscar
+        where: {
+          nombre: {
+            [Op.substring]: buscar
+        }
        
-        
-      }).then ((products)=>{
+      }
+    }).then ((products)=>{
      
       res.render("products", {
         title: "Resultado para " + buscar,
